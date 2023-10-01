@@ -9,20 +9,26 @@ public class Event implements Comparable<Event> {
     private int duration; //in minutes
     //Compares two events based off of their date. If the dates are the same it will compare timeslots
     public int compareTo(Event event2){
-        return 1;
+        int dateCompare = date.compareTo(event2.date);
+        if (dateCompare != 0){
+            return dateCompare;
+        }
+        else{
+            return timeslot.compareTo(event2.timeslot);
+        }
     }
-    //Returns a textual representation of an event
+    //Returns a textual representation of an event     add end time
     @Override public String toString(Event event1){
-        StringBuilder stb = new StringBuilder();
-        stb.append("[Event Date: ").append(date).append("] ");
-        stb.append("[Start: ").append().append(" ")
-        stb.append("");
-        stb.append("[Contact: ").append(contact.getDepartment()).append(", ").append(contact.getEmail());
-        return stb.toString();
+       return "[Event Date: " + date + "] " + "[Start: " + timeslot.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
     }
+    
     //Returns true if two dates, timeslots, and locations are equal
-    @Override public bool equals(){
-
+    @Override public bool equals(Object event2){
+    if(event2 == null){
+        return false;
+    }
+    Event event = (Event) event2;
+    return date.equals(event2.date) && timeslot == event2.timeslot && location == event2.location;
     }
 
     }
