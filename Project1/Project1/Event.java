@@ -17,10 +17,11 @@ public class Event implements Comparable<Event> {
             return timeslot.compareTo(event2.timeslot);
         }
     }
-    //Returns a textual representation of an event
+    //Returns a textual representation of an event     add end time
     @Override public String toString(Event event1){
        return "[Event Date: " + date + "] " + "[Start: " + timeslot.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
     }
+    
     //Returns true if two dates, timeslots, and locations are equal
     @Override public bool equals(Object event2){
     if(event2 == null){
