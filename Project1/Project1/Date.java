@@ -1,4 +1,10 @@
 package project1;
+
+/**
+Contains information and methods for a specific date.
+
+@author SebastianHanna
+*/
 public class Date implements Comparable<Date> {
     private int year;
     private int month;
@@ -28,8 +34,10 @@ public class Date implements Comparable<Date> {
     public static final int OCT = 10;
     public static final int NOV = 11;
     public static final int DEC = 12;    
-
-    //check if the date is a valid calendar date 
+    /**
+     * Determines if this.year is a leap year.
+     * @return true is this Date object's year is a leap year and false if it is not
+     */
     private boolean isLeap(){
         if (this.year %4 != 0)
             return false;
@@ -42,6 +50,10 @@ public class Date implements Comparable<Date> {
         else 
             return true;
     }
+    /**
+     * Determines if this object has a valid date.
+     * @return true is this object hold a valid date and false if does not hold a valid date
+     */
     public boolean isValid(){
 
         if (this.month < MIN_MONTH || this.month > MAX_MONTH )
@@ -59,28 +71,52 @@ public class Date implements Comparable<Date> {
         else 
             return true;
     }
-    
+    /**
+    Determines whether or not this objects month has 31 days
+    @return true if month is one of the months with 31 days 
+    */   
     private boolean isLongMonth(){
-        /**
-        Determines whether or not this objects month has 31 days
-        @return true if month is one of the months with 31 days 
-        */
+        
         if (this.month == JAN || this.month == MAR || this.month == MAY || this.month == JUL || this.month == AUG || this.month == OCT || this.month == DEC){
             return true; } 
         else 
             return false;
     }
-
+    /**
+     * Compare this objects date with anothers.
+     * @param Date The date object that you want to compare this object's data to.
+     * @return 0 if the dates are equal. If the dates are not equal it will return a positive or negative integer
+     */
     @Override public int compareTo(Date date2){
         return this.day-date2.day+this.month-date2.month+this.year-date2.year;
     }
-
+    /**
+     * Constructs a Date object with 3 int inputs
+     * @param month The month you want this object to hold
+     * @param day The day you want this object to hold
+     * @param year The year you want this object to hold
+     */
     public Date(int month, int day, int year){
         this.year = year;
         this.month = month;
         this.day = day;
     }
 
+    /**
+     * Creates a date object using a string 
+     * @param dateString A string that represents the date you want to use to create an object
+     */
+    public Date(String dateString){
+        String[] splitDate = dateString.split("/");
+        this.month = Integer.parseInt(splitDate[0]);
+        this.day = Integer.parseInt(splitDate[1]);
+        this.year = Integer.parseInt(splitDate[2]);
+    }
+
+    /**
+     * Main class for testing isValid().
+     * @param args
+     */
     public static void main(String[] args){
         testDaysinFeb_noLeap();
         testDaysinFeb_yesLeap();
@@ -90,4 +126,9 @@ public class Date implements Comparable<Date> {
         testNormalDay();
 
     }
+
+    private static void testDaysinFeb_noLeap(){
+        Date date = new Date("2/29/2011");
+    }
+
 }
