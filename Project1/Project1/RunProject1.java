@@ -1,4 +1,4 @@
-package Project1;
+package project1;
 public class RunProject1 {
     public static void main(String[] args){
         new EventOrganizer().run();
