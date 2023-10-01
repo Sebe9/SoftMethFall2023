@@ -12,6 +12,6 @@ public String getEmail(){
 }
 
     public boolean isValid(){
-        return email.matches("@rutgers.edu");
+        return email.contains("@rutgers.edu") && department.getName() = "Computer Science" || "Electrical Engineering" || "Information Technology and Informatics" || "Mathematics" || "Business Analytics and Information Technology";
     }
 }
