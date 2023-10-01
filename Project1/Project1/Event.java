@@ -13,7 +13,12 @@ public class Event implements Comparable<Event> {
     }
     //Returns a textual representation of an event
     @Override public String toString(Event event1){
-
+        StringBuilder stb = new StringBuilder();
+        stb.append("[Event Date: ").append(date).append("] ");
+        stb.append("[Start: ").append().append(" ")
+        stb.append("");
+        stb.append("[Contact: ").append(contact.getDepartment()).append(", ").append(contact.getEmail());
+        return stb.toString();
     }
     //Returns true if two dates, timeslots, and locations are equal
     @Override public bool equals(){
