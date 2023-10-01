@@ -71,13 +71,23 @@ public class Date implements Comparable<Date> {
             return false;
     }
 
-    public int compareTo(Date date2){
-
+    @Override public int compareTo(Date date2){
+        return this.day-date2.day+this.month-date2.month+this.year-date2.year;
     }
 
-    public Date(int year, int month, int day){
+    public Date(int month, int day, int year){
         this.year = year;
         this.month = month;
         this.day = day;
+    }
+
+    public static void main(String[] args){
+        testDaysinFeb_noLeap();
+        testDaysinFeb_yesLeap();
+        testMonthsOutofRange();
+        testDaysOutofRange();
+        testYearsOutofRange();
+        testNormalDay();
+
     }
 }
