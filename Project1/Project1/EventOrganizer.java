@@ -24,23 +24,23 @@ public class EventOrganizer{
             if (nextLine.isBlank()){
                 continue;
             } 
-            else if (inputArray[0] == "R"){
+            else if (inputArray[0].equals("R")){
                 System.out.println("R command was called");
                 rCommand();
             }
-            else if (inputArray[0] == "P"){
+            else if (inputArray[0].equals("P") ){
                 System.out.println("P command was called");
             }
-            else if (inputArray[0] == "PE"){
+            else if (inputArray[0].equals("PE")){
                 System.out.println("PE command was called");
             }
-            else if (inputArray[0] == "PC"){
+            else if (inputArray[0].equals("PC")){
                 System.out.println("PC command was called");
             }
-            else if (inputArray[0] == "PD"){
+            else if (inputArray[0].equals("PD")){
                 System.out.println("PD command was called");
             }
-            else if (inputArray[0] == "Q"){
+            else if (inputArray[0].equals("Q")){
                 System.out.println("Q command was called");
                 break;
             }
