@@ -14,7 +14,7 @@ public class Event implements Comparable<Event> {
             return dateCompare;
         }
         else{
-            return timeslot.compareTo(event2.timeslot);
+            return this.startTime.compareTo(event2.startTime);
         }
     }
     //Returns a textual representation of an event     add end time
