@@ -108,7 +108,8 @@ public class Date implements Comparable<Date> {
     /**
      * Compare this objects date with anothers.
      * @param Date The date object that you want to compare this object's data to.
-     * @return int 0 if the dates are equal. If this objects date is before the parameter's date it will return a positive integer
+     * @return int 0 if the dates are equal. If this objects date is before the parameter's date it will return a positive integer. 
+     * If this date is after the parameter's it will return a negative number
      */
     @Override public int compareTo(Date date2){
         if (this.year!=date2.year){

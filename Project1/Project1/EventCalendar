@@ -99,6 +99,17 @@ public class EventCalendar {
 
     }
     /**
+     * This method swaps two events in the EventCalendar array
+     * @param int the index of the first Event object
+     * @param int the index of the second Event object
+     */
+    private void swapEvents(int index1, int index2){
+        Event tempEvent = events[index1];
+        events[index1] = events[index2];
+        events[index2] = tempEvent;
+
+    }
+    /**
      * This method prints the array by date and timeslot
      */
     public void printByDate() {
@@ -106,21 +117,69 @@ public class EventCalendar {
         while(unsorted == true){
             unsorted = false;
             for (int j = 0; j < numEvents-1; j++){
+                //swap Events if event[j] has an later date than event[j+1]
                 if (events[j].getDate().compareTo(events[j+1].getDate()) < 0){
-                    Event tempEvent = events[j];
-                    events[j] = events[j+1];
-                    events[j+1] = events[j];
+                    swapEvents(j,j+1);
                     unsorted = true;
                 }
+                //If the dates are the same swap if event[j] has an later timeslot than event[j+1] 
                 else if(events[j].getDate().compareTo(events[j+1].getDate())==0 ){
                     if(events[j].getTimeSlot().compareTo(events[j+1].getTimeSlot()) < 0){
-                        
+                        swapEvents(j,j+1);
+                        unsorted = true;
                     }
-                    unsorted = true;
+                    
                 }
             }
         }
+        print();
     } 
-    public void printByCampus() { } //ordered by campus and building/room
-    public void printByDepartment(){ } //ordered by department
+    public void printByCampus() { 
+        boolean unsorted = true; 
+        while(unsorted == true){
+            unsorted = false;
+            for (int j = 0; j < numEvents-1; j++){
+                String location1 = events[j].getLocation().getLocation();
+                String location2 = events[j+1].getLocation().getLocation();
+                String[] location1Parsed = location1.split(",");
+                String[] location2Parsed = location2.split(",");
+                String location1Campus = location1Parsed[1];
+                String location2Campus = location2Parsed[1];
+                String location1Building = location1Parsed[0];
+                String location2Building = location2Parsed[0];
+                if (location1Campus.compareTo(location2Campus) > 0){
+                    swapEvents(j,j+1);
+                    unsorted = true;
+                }
+                else if(location1Campus.compareTo(location2Campus) == 0 ){
+                    if(location1Building.compareTo(location2Building) > 0){
+                        swapEvents(j,j+1);
+                        unsorted = true;
+                    }
+                }
+            }
+        }
+        print();
+    } 
+    
+    
+    /**
+     * Sorts the array by Department name (Alphabetically) the prints it.
+     */
+    public void printByDepartment(){ 
+        boolean unsorted = true; 
+        while(unsorted == true){
+            unsorted = false;
+            for (int j = 0; j < numEvents-1; j++){
+                //swap Events if event[j] has an later date than event[j+1]
+                if (events[j].getContact().getDepartment().getContact().getName().compareTo(events[j+1].getContact().getDepartment().getContact().getName()) > 0){
+                    swapEvents(j,j+1);
+                    unsorted = true;
+                }   
+            }
+        }
+        print();
+    }
+
+
 }

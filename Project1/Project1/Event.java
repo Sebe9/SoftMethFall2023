@@ -17,6 +17,21 @@ public class Event implements Comparable<Event> {
             return this.startTime.compareTo(event2.startTime);
         }
     }
+    /**
+     * Gets the contact object associated with this event
+     * @return Contact Returns the contact object associated with this event
+     */
+    public Contact getContact(){
+        return contact;
+    }
+    /**
+     * Returns the location object associated with this event.
+     * @return Location returns the location object associated with this event
+     */
+    public Location getLocation(){
+        return location;
+    }
+    
     //Returns a textual representation of an event     add end time
     @Override public String toString(Event event1){
        return "[Event Date: " + date + "] " + "[Start: " + timeslot.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
