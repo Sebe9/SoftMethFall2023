@@ -44,4 +44,4 @@ public class Event implements Comparable<Event> {
         return date.equals(event.date) && startTime == event.startTime && location == event.location;
     }
 
-    }
+}
