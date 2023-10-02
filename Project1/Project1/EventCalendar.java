@@ -1,4 +1,4 @@
-package Project1;
+package project1;
 public class EventCalendar {
     private Event [] events; //the array holding the list of events
     private int numEvents; //current number of events in the array
@@ -9,7 +9,7 @@ public class EventCalendar {
      * Takes no arguments. Initializes the events array to an empty array and sets numEvents to 0
      */
     public EventCalendar(){
-        this.events = {};
+        this.events = new Event[4];
         numEvents = 0;
     }
     /**
@@ -45,17 +45,13 @@ public class EventCalendar {
      * @return boolean Returns true if event is successfully added
      */
     public boolean add(Event event) {
-        if (events.length == 0){
-            events = new Event[4];
-            events[0] = event;
-            numEvents++;
-            return true;
-        }
+        
         events[numEvents] = event;
         numEvents++;
         if(events.length == numEvents){
-            grow()
+            grow();
         }
+        return true;
      }
     /**
      * This method removes an event from the EventCalendar
