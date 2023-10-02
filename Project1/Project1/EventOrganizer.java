@@ -1,7 +1,9 @@
 package project1;
 import java.util.Scanner;
 public class EventOrganizer{
-    public static final int R_ASCII = 82;
+   
+
+
     /**
      * Instantiaties the Event Organizer.
      * Also Creates a new EventCalendar object.
@@ -15,15 +17,37 @@ public class EventOrganizer{
      */
     public void run(){
         Scanner scannerObj = new Scanner(System.in);
-        String nextLine  = "";
-        while (scannerObj.hasNextLine()){}
-        while(nextLine!="Q"){
-            if (nextLine != ""){
-                if (nextLine.charAt(0) == R_ASCII ){
-                    System.out.println("R command was called");
-                }
+        while(true){
+            String nextLine  = scannerObj.nextLine();
+            String[] inputArray = nextLine.split(" ");
+            System.out.println(inputArray[0]+ " -- INput command");
+            System.out.println(inputArray[0]==" R");
+            if (nextLine.isBlank()){
+                continue;
+            } 
+            else if (inputArray[0] == "R"){
+                System.out.println("R command was called");
             }
-            nextLine = scannerObj.nextLine();
+            else if (inputArray[0] == "P"){
+                System.out.println("P command was called");
+            }
+            else if (inputArray[0] == "PE"){
+                System.out.println("PE command was called");
+            }
+            else if (inputArray[0] == "PC"){
+                System.out.println("PC command was called");
+            }
+            else if (inputArray[0] == "PD"){
+                System.out.println("PD command was called");
+            }
+            else if (inputArray[0] == "Q"){
+                System.out.println("Q command was called");
+                break;
+            }
+            else{
+                System.out.println(nextLine.charAt(0)+" is an invalid command!");
+            }
+
         }
         System.out.println("Event Organizer terminated.");
     }
