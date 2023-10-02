@@ -21,7 +21,7 @@ public class EventOrganizer{
             String nextLine  = scannerObj.nextLine();
             String[] inputArray = nextLine.split(" ");
             System.out.println(inputArray[0]+ " -- INput command");
-            System.out.println(inputArray[0]==" R");
+            System.out.println(inputArray[0].equalsIgnoreCase("R"));
             if (nextLine.isBlank()){
                 continue;
             } 
