@@ -17,6 +17,9 @@ public class Event implements Comparable<Event> {
             return this.startTime.compareTo(event2.startTime);
         }
     }
+    public Timeslot getTimeslot(){
+        return startTime;
+    }
     /**
      * Gets the contact object associated with this event
      * @return Contact Returns the contact object associated with this event
@@ -31,7 +34,7 @@ public class Event implements Comparable<Event> {
     public Location getLocation(){
         return location;
     }
-    
+
     //Returns a textual representation of an event     add end time
     @Override public String toString(Event event1){
        return "[Event Date: " + date + "] " + "[Start: " + timeslot.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";

@@ -124,7 +124,7 @@ public class EventCalendar {
                 }
                 //If the dates are the same swap if event[j] has an later timeslot than event[j+1] 
                 else if(events[j].getDate().compareTo(events[j+1].getDate())==0 ){
-                    if(events[j].getTimeSlot().compareTo(events[j+1].getTimeSlot()) < 0){
+                    if(events[j].getTimeSlot().compareTo(events[j+1].getTimeSlot()) > 0){
                         swapEvents(j,j+1);
                         unsorted = true;
                     }
