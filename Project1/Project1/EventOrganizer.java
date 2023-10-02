@@ -1,19 +1,18 @@
 package project1;
 import java.util.Scanner;
 public class EventOrganizer{
-   
-
-
+    private EventCalendar myCalendar;
+    private Scanner scanner;
     /**
      * Instantiaties the Event Organizer.
      * Also Creates a new EventCalendar object.
      */
     public EventOrganizer(){
-        EventCalendar myCalendar = new EventCalendar();
+        myCalendar = new EventCalendar();
         System.out.println("Event Organizer running....");
     }
     /**
-     * 
+     * Method that continuously reads commands until it reaches a q command in which case the program is terminated.
      */
     public void run(){
         Scanner scannerObj = new Scanner(System.in);
@@ -27,6 +26,7 @@ public class EventOrganizer{
             } 
             else if (inputArray[0] == "R"){
                 System.out.println("R command was called");
+                rCommand();
             }
             else if (inputArray[0] == "P"){
                 System.out.println("P command was called");
@@ -51,20 +51,44 @@ public class EventOrganizer{
         }
         System.out.println("Event Organizer terminated.");
     }
-
-
-    private void rCommand(){
-
+    /**
+     * Method in which the r command is processed and cancels an event.
+     */
+    private void rCommand(String[] event){
+        Date date = new Date(event[1]);
+        Timeslot timeslot = Timeslot.valueOf(event[2]);
+        Location location = Location.valueOf(event[3]);
+        Department department = Department.valueOf(event[4]);
+        String email = event[5];
+        int duration = Integer.parseInt(event[6]);
+        Event event  = new Event(date, timeslot, location, new Contact(department, email));
+        if (myCalendar.remove(event)) {
+            System.out.println("Event removed successfully.");
+        } else {
+            System.out.println("Event not found or cannot be removed.");
+        }
     }
+    /**
+     * Method in which the p command is processed and prints the event calendar.
+     */
     private void pCommand(){
-
+        myCalendar.print(); 
     }
+    /**
+     * Method in which the pe command is processed and displays the event calendar, sorted by event date and timeslot.
+     */
     private void peCommand(){
 
     }
+    /**
+     * Method in which the pc command is processed and displays the event calendar, sorted by campus and building.
+     */
     private void pcCommand(){
 
     }
+    /**
+     * Method in which the pd command is processed and displays the event calendar, sorted by the department and contact.
+     */
     private void pdCommand(){
 
     }
