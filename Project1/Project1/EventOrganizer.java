@@ -24,23 +24,23 @@ public class EventOrganizer{
             if (nextLine.isBlank()){
                 continue;
             } 
-            else if (inputArray[0].equals("R")){
+            else if (inputArray[0] == "R"){
                 System.out.println("R command was called");
-                rCommand();
+                rCommand(inputArray);
             }
-            else if (inputArray[0].equals("P") ){
+            else if (inputArray[0] == "P"){
                 System.out.println("P command was called");
             }
-            else if (inputArray[0].equals("PE")){
+            else if (inputArray[0] == "PE"){
                 System.out.println("PE command was called");
             }
-            else if (inputArray[0].equals("PC")){
+            else if (inputArray[0] == "PC"){
                 System.out.println("PC command was called");
             }
-            else if (inputArray[0].equals("PD")){
+            else if (inputArray[0] == "PD"){
                 System.out.println("PD command was called");
             }
-            else if (inputArray[0].equals("Q")){
+            else if (inputArray[0] == "Q"){
                 System.out.println("Q command was called");
                 break;
             }
@@ -54,13 +54,13 @@ public class EventOrganizer{
     /**
      * Method in which the r command is processed and cancels an event.
      */
-    private void rCommand(String[] event){
-        Date date = new Date(event[1]);
-        Timeslot timeslot = Timeslot.valueOf(event[2]);
-        Location location = Location.valueOf(event[3]);
-        Department department = Department.valueOf(event[4]);
-        String email = event[5];
-        int duration = Integer.parseInt(event[6]);
+    private void rCommand(String[] eventInfo){
+        Date date = new Date(eventInfo[1]);
+        Timeslot timeslot = Timeslot.valueOf(eventInfo[2]);
+        Location location = Location.valueOf(eventInfo[3]);
+        Department department = Department.valueOf(eventInfo[4]);
+        String email = eventInfo[5];
+        int duration = Integer.parseInt(eventInfo[6]);
         Event event  = new Event(date, timeslot, location, new Contact(department, email));
         if (myCalendar.remove(event)) {
             System.out.println("Event removed successfully.");

@@ -12,6 +12,13 @@ public class Event implements Comparable<Event> {
     private Contact contact; //include the department name and email
     private int duration; //in minutes
     
+    public Event(Date date, Timeslot timeslot, Location location, Contact contact, int duration){
+        this.date = date;
+        this.startTime = startTime;
+        this.location = location;
+        this.contact = contact;
+        this.duration = duration;
+    }
     //Compares two events based off of their date. If the dates are the same it will compare timeslots
     /**
      * Compares the current event object with another event based off of their dates and timeslots.
@@ -46,7 +53,7 @@ public class Event implements Comparable<Event> {
 
     //Returns a textual representation of an event     add end time
     @Override public String toString(Event event1){
-       return "[Event Date: " + date + "] " + "[Start: " + timeslot.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
+       return "[Event Date: " + date + "] " + "[Start: " + startTime.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
     }
     //Returns true if two dates, timeslots, and locations are equal
     /**
