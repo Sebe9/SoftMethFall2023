@@ -33,7 +33,30 @@ public class Date implements Comparable<Date> {
     public static final int SEP = 9;
     public static final int OCT = 10;
     public static final int NOV = 11;
-    public static final int DEC = 12;    
+    public static final int DEC = 12; 
+    
+    /**
+     * Getter method for the month of a date
+     * @return int Returns the month
+     */
+    public int getMonth(){
+        return month;
+    }
+    /**
+     * Getter method for the day of a date
+     * @return int Returns the day
+     */
+    public int getDay(){
+        return day;
+    }
+    /**
+     * Getter method for the year of a date
+     * @return int Returns the year
+     */
+    public int getYear(){
+        return this.year;
+    }
+
     /**
      * Determines if this.year is a leap year.
      * @return true is this Date object's year is a leap year and false if it is not
@@ -85,10 +108,20 @@ public class Date implements Comparable<Date> {
     /**
      * Compare this objects date with anothers.
      * @param Date The date object that you want to compare this object's data to.
-     * @return 0 if the dates are equal. If the dates are not equal it will return a positive or negative integer
+     * @return int 0 if the dates are equal. If this objects date is before the parameter's date it will return a positive integer
      */
     @Override public int compareTo(Date date2){
-        return this.day-date2.day+this.month-date2.month+this.year-date2.year;
+        if (this.year!=date2.year){
+            return date2.year-this.year;
+        }
+        else if(this.month!=date2.month){
+            return date2.month-this.month;
+        }
+        else if(this.day!=date2.day){
+            return date2.day-this.day;
+        }
+        else
+            return 0;
     }
     /**
      * Constructs a Date object with 3 int inputs
@@ -108,9 +141,9 @@ public class Date implements Comparable<Date> {
      */
     public Date(String dateString){
         String[] splitDate = dateString.split("/");
-        this.month = Integer.parseInt(splitDate[0]);
-        this.day = Integer.parseInt(splitDate[1]);
-        this.year = Integer.parseInt(splitDate[2]);
+        month = Integer.parseInt(splitDate[0]);
+        day = Integer.parseInt(splitDate[1]);
+        year = Integer.parseInt(splitDate[2]);
     }
 
     /**
@@ -118,17 +151,114 @@ public class Date implements Comparable<Date> {
      * @param args
      */
     public static void main(String[] args){
+    
         testDaysinFeb_noLeap();
+         
         testDaysinFeb_yesLeap();
+         
         testMonthsOutofRange();
+ 
         testDaysOutofRange();
+
         testYearsOutofRange();
+
         testNormalDay();
 
-    }
+        testThirtyDayMonth();
 
+    
+       
+    }
+    private static void testResult(boolean expected, boolean actual){
+        System.out.print("The expected output is: "+expected+" and the actual result is: "+actual);
+        if(expected==actual){
+            System.out.println(" -- This test case passes!");
+        }
+        else{
+            System.out.println(" -- This test case does NOT PASS!!");
+        }
+        System.out.println();
+    }
+    /**
+     * Test case #1
+     * Tests if the number of days in feb is correct in a non leap year 
+     */
     private static void testDaysinFeb_noLeap(){
-        Date date = new Date("2/29/2011");
+        Date testDate = new Date("2/29/2011");
+        boolean expectedOutput = false;
+        boolean actualOutput = testDate.isValid();
+        System.out.println("Test case #1: The nubmer of days in Feb in a non leap year is 28:");
+        testResult(expectedOutput, actualOutput);
+        
+    }
+    /**
+     * Test case #2
+     * Tests to see if the number of days in Feb is correct in a leap year
+     */
+    private static void testDaysinFeb_yesLeap(){
+        Date testDate = new Date("2/29/2004");
+        boolean expectedOutput = true;
+        boolean actualOutput = testDate.isValid();
+        System.out.println("Test case #2: The number of days in Feb in a leap year is 29");
+        testResult(expectedOutput, actualOutput);
     }
 
+    /**
+     * Test case #3
+     * Tests to see if there is correctly only 12 months
+     */
+    private static void testMonthsOutofRange(){
+        Date testDate = new Date("13/01/2000");
+        boolean expectedOutput = false;
+        boolean actualOutput = testDate.isValid();
+        System.out.println("Test case #3: There is only 12 months");
+        testResult(expectedOutput, actualOutput);
+    }
+    /**
+     * Test case #4
+     * Tests to see if a month with 32 days will be considered valid or not
+     */
+ 
+    private static void testDaysOutofRange(){
+        Date testDate = new Date("01/32/2000");
+        boolean expectedOutput = false;
+        boolean actualOutput = testDate.isValid();
+        System.out.println("Test case #4: There is no month with 32 or more days");
+        testResult(expectedOutput, actualOutput);
+    }
+    /**
+     * Test case #5
+     * Tests to see if  a negative year will be valid
+     */
+
+    private static void testYearsOutofRange(){
+        Date testDate = new Date("01/01/-1");
+        boolean expectedOutput = false;
+        boolean actualOutput = testDate.isValid();
+        System.out.println("Test case #5: There cannot be a date with a year less than 0");
+        testResult(expectedOutput, actualOutput);
+    }
+
+    /**
+     * Test case #6
+     * Tests to see if a normal date is considered valid
+     */
+    private static void testNormalDay(){
+        Date testDate = new Date("05/14/2003");
+        boolean expectedOutput = true;
+        boolean actualOutput = testDate.isValid();
+        System.out.println("Test case #6: Normal date");
+        testResult(expectedOutput, actualOutput);
+    }
+    /**
+     * Test case #7
+     * Tests to see if a month that should only contain 30 days will be considered valid if entered with 31 days
+     */
+    private static void testThirtyDayMonth(){
+        Date testDate = new Date("06/31/2000");
+        boolean expectedOutput = false;
+        boolean actualOutput = testDate.isValid();
+        System.out.println("Test case #7: Some months can only have 30 days");
+        testResult(expectedOutput, actualOutput);
+    }
 }
