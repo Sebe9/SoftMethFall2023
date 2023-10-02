@@ -24,11 +24,11 @@ public class Event implements Comparable<Event> {
     
     //Returns true if two dates, timeslots, and locations are equal
     @Override public bool equals(Object event2){
-    if(event2 == null){
-        return false;
-    }
-    Event event = (Event) event2;
-    return date.equals(event2.date) && timeslot == event2.timeslot && location == event2.location;
+        if(event2 == null){
+            return false;
+        }
+        Event event = (Event) event2;
+        return date.equals(event2.date) && timeslot == event2.timeslot && location == event2.location;
     }
 
     }
