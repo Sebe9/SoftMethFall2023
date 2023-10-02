@@ -10,10 +10,17 @@ public enum Location {
 
     private String roomLocation;
 
+    /**
+     * Assigns the address of the event to the object.
+     * @param roomLocation The location the object will hold.
+     */
     Location(String roomLocation){
         this.roomLocation = roomLocation;
     }
-
+    /**
+     * Retrievies the data of the event's location.
+     * @return the value of the location.
+     */
     public String getLocation() {
         return roomLocation;
     }
