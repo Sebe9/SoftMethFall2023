@@ -19,4 +19,6 @@ public enum Timeslot {
     public String getTime(){
         return time;
     }
+
+    
 }
