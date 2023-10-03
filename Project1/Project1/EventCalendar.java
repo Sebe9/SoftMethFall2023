@@ -1,4 +1,8 @@
 package project1;
+/**
+ * Manipulates the event calendar through methods that add events, remove events, and sort events. 
+ * @author SebastianHanna
+ */
 public class EventCalendar {
     private Event [] events; //the array holding the list of events
     private int numEvents; //current number of events in the array
@@ -6,7 +10,7 @@ public class EventCalendar {
     public static final int NOT_FOUND = -1;    
     /**
      * Constructs the EventCalendar Object. 
-     * Takes no arguments. Initializes the events array to an empty array and sets numEvents to 0
+     * Takes no arguments. Initializes the events array to an empty array and sets numEvents to 0.
      */
     public EventCalendar(){
         this.events = new Event[4];
@@ -14,8 +18,8 @@ public class EventCalendar {
     }
     /**
      * This method finds out if an event is in the events array.
-     * @param event takes the event that is being searched for
-     * @return int returns the index of the event if found. Returns -1 if the event is not in the array
+     * @param event takes the event that is being searched for.
+     * @return int returns the index of the event if found. Returns -1 if the event is not in the array.
      */
     private int find(Event event) { 
         for (int i = 0; i < numEvents; i++){
@@ -41,8 +45,8 @@ public class EventCalendar {
     
     /**
      * Adds an event to the end of the event array.
-     * @param event The even you want to add to EventCalendar
-     * @return boolean Returns true if event is successfully added
+     * @param event The even you want to add to EventCalendar.
+     * @return boolean Returns true if event is successfully added.
      */
     public boolean add(Event event) {
         
@@ -54,9 +58,9 @@ public class EventCalendar {
         return true;
      }
     /**
-     * This method removes an event from the EventCalendar
-     * @return boolean Returns true if event was successfully removed. Returns false if the event could not be found and removed
-     * @param event The Event that should be removed
+     * This method removes an event from the EventCalendar.
+     * @return boolean Returns true if event was successfully removed. Returns false if the event could not be found and removed.
+     * @param event The Event that should be removed.
      */
     public boolean remove(Event event) { 
         int indexToBeRemoved = find(event);
@@ -73,7 +77,7 @@ public class EventCalendar {
     /**
      * This method finds out whether or not an event is contained in the EventCalendar.
      * @return boolean Returns true is the event is contained in the EventCalendar array. Returns false if it is not.
-     * @param event The event you want to see if EventCalendar contains
+     * @param event The event you want to see if EventCalendar contains.
      */
     public boolean contains(Event event) {
         int foundIndex = find(event);
@@ -86,7 +90,7 @@ public class EventCalendar {
     }
 
     /*
-     * This method prints the array in the order it is currently in
+     * This method prints the array in the order it is currently in.
      */
     public void print() {
         for (int i = 0; i <numEvents; i++){
@@ -95,9 +99,9 @@ public class EventCalendar {
 
     }
     /**
-     * This method swaps two events in the EventCalendar array
-     * @param int the index of the first Event object
-     * @param int the index of the second Event object
+     * This method swaps two events in the EventCalendar array.
+     * @param int the index of the first Event object.
+     * @param int the index of the second Event object.
      */
     private void swapEvents(int index1, int index2){
         Event tempEvent = events[index1];
@@ -106,7 +110,7 @@ public class EventCalendar {
 
     }
     /**
-     * This method prints the array by date and timeslot
+     * This method prints the array by date and timeslot.
      */
     public void printByDate() {
         boolean unsorted = true; 
@@ -130,6 +134,9 @@ public class EventCalendar {
         }
         print();
     } 
+    /**
+     * This method prints the array by campus.
+     */
     public void printByCampus() { 
         boolean unsorted = true; 
         while(unsorted == true){

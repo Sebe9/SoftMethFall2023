@@ -12,9 +12,9 @@ public class Event implements Comparable<Event> {
     private Contact contact; //include the department name and email
     private int duration; //in minutes
     
-    public Event(Date date, Timeslot timeslot, Location location, Contact contact, int duration){
+    public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
         this.date = date;
-        this.startTime = timeslot;
+        this.startTime = startTime;
         this.location = location;
         this.contact = contact;
         this.duration = duration;
@@ -56,6 +56,7 @@ public class Event implements Comparable<Event> {
         return location;
     }
     /**
+<<<<<<< HEAD
      * Gets the date of this event
      * @return Date Returns the date of this event
      */
@@ -66,6 +67,36 @@ public class Event implements Comparable<Event> {
     //Returns a textual representation of an event     add end time
     @Override public String toString(Event event1){
        return "[Event Date: " + date + "] " + "[Start: " + startTime.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
+=======
+     * Method to calculate the end time of the event and converting it into a string
+     */
+    public String getEndTime(Timeslot startTime, int duration){
+        String time = startTime.getTime();
+        String[] timeSplit = time.split(":");
+        int hours = Integer.parseInt(timeSplit[0]);
+        int minutes = Integer.parseInt(timeSplit[1].substring(0,2));
+        String amPm = timeSplit[1].substring(2).trim();
+        if(amPm.equalsIgnoreCase("pm") && hours != 12){
+            hours += 12;
+        } else if(amPm.equalsIgnoreCase("am") && hours == 12){
+            hours = 0;
+        }
+        int totalMin = hours * 60 + minutes + duration;
+        int newHour = totalMin/60;
+        int newMin = totalMin%60;
+        String newAmPm = (newHour >= 12) ? "pm" : "am";
+        if(newHour > 12){
+            newHour -= 12;
+        } else if (newHour == 0){
+            newHour = 12;
+        }
+        String newTime = String.format("%02d:%02d %s", newHour, newMin, newAmPm);
+        return newTime;
+    }
+    //Returns a textual representation of an event     
+    public String toString(Event event1){
+       return "[Event Date: " + event1.date + "] " + "[Start: " + event1.startTime.getTime() + "] " + "[End: " + getEndTime(event1.startTime, event1.duration)+ "] "+ "@" + event1.location + " " + "(" + event1.location.getLocation() + ") " + "[Contact: " +  event1.contact.getDepartment() + ", " + event1.contact.getEmail() + "]";
+>>>>>>> eb723a38f53f789f91985e212b0b0c66003cef7a
     }
     //Returns true if two dates, timeslots, and locations are equal
     /**

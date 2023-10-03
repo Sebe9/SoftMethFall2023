@@ -1,4 +1,8 @@
 package project1;
+/**
+ * Contains information of the event's location, influding the campus and building.
+ * @author Matthew Chan
+ */
 public enum Location {
     ARC103("Allison Road Classroom, Busch"),
     HLL114("Hill Center, Busch"), 
