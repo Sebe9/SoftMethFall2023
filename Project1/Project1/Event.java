@@ -56,19 +56,10 @@ public class Event implements Comparable<Event> {
     public Location getLocation(){
         return location;
     }
-    /**
-<<<<<<< HEAD
-     * Gets the date of this event
-     * @return Date Returns the date of this event
-     */
     public Date getDate(){
         return date;
     }
-
-    //Returns a textual representation of an event     add end time
-    @Override public String toString(Event event1){
-       return "[Event Date: " + date + "] " + "[Start: " + startTime.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
-=======
+    /**
      * Method to calculate the end time of the event and converting it into a string
      */
     public String getEndTime(Timeslot startTime, int duration){
@@ -97,7 +88,6 @@ public class Event implements Comparable<Event> {
     //Returns a textual representation of an event     
     public String toString(Event event1){
        return "[Event Date: " + event1.date + "] " + "[Start: " + event1.startTime.getTime() + "] " + "[End: " + getEndTime(event1.startTime, event1.duration)+ "] "+ "@" + event1.location + " " + "(" + event1.location.getLocation() + ") " + "[Contact: " +  event1.contact.getDepartment() + ", " + event1.contact.getEmail() + "]";
->>>>>>> eb723a38f53f789f91985e212b0b0c66003cef7a
     }
     //Returns true if two dates, timeslots, and locations are equal
     /**
