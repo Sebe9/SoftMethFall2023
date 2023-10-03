@@ -77,7 +77,7 @@ public class Event implements Comparable<Event> {
     }
     //Returns a textual representation of an event     
     public String toString(Event event1){
-       return "[Event Date: " + event1.date + "] " + "[Start: " + event1.startTime.getTime() + "] " + "[End: " + event1.getEndTime(startTime, duration)+ "] "+ "@" + event1.location + " " + "(" + event1.location.getLocation() + ") " + "[Contact: " +  event1.contact.getDepartment() + ", " + event1.contact.getEmail() + "]";
+       return "[Event Date: " + event1.date + "] " + "[Start: " + event1.startTime.getTime() + "] " + "[End: " + getEndTime(event1.startTime, event1.duration)+ "] "+ "@" + event1.location + " " + "(" + event1.location.getLocation() + ") " + "[Contact: " +  event1.contact.getDepartment() + ", " + event1.contact.getEmail() + "]";
     }
     //Returns true if two dates, timeslots, and locations are equal
     /**
