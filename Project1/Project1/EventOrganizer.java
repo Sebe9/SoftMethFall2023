@@ -24,23 +24,27 @@ public class EventOrganizer{
             if (nextLine.isBlank()){
                 continue;
             } 
-            else if (inputArray[0] == "R"){
+            else if (inputArray[0].equals("R")){
                 System.out.println("R command was called");
                 rCommand(inputArray);
             }
-            else if (inputArray[0] == "P"){
+            else if (inputArray[0].equals("P")){
                 System.out.println("P command was called");
+                pCommand();
             }
-            else if (inputArray[0] == "PE"){
+            else if (inputArray[0].equals("PE")){
                 System.out.println("PE command was called");
+                peCommand();
             }
-            else if (inputArray[0] == "PC"){
+            else if (inputArray[0].equals("PC")){
                 System.out.println("PC command was called");
+                pcCommand();
             }
-            else if (inputArray[0] == "PD"){
+            else if (inputArray[0].equals("PD")){
                 System.out.println("PD command was called");
+                pdCommand();
             }
-            else if (inputArray[0] == "Q"){
+            else if (inputArray[0].equals("Q")){
                 System.out.println("Q command was called");
                 break;
             }
@@ -61,11 +65,12 @@ public class EventOrganizer{
         Department department = Department.valueOf(eventInfo[4]);
         String email = eventInfo[5];
         int duration = Integer.parseInt(eventInfo[6]);
-        Event event  = new Event(date, timeslot, location, new Contact(department, email));
+        Contact newContact = new Contact(department, email);
+        Event event  = new Event(date, timeslot, location, newContact, duration);
         if (myCalendar.remove(event)) {
-            System.out.println("Event removed successfully.");
+            System.out.println("Event has been removed from the calendar!");
         } else {
-            System.out.println("Event not found or cannot be removed.");
+            System.out.println("Cannot remove; event is not in the calendar!");
         }
     }
     /**
@@ -78,19 +83,19 @@ public class EventOrganizer{
      * Method in which the pe command is processed and displays the event calendar, sorted by event date and timeslot.
      */
     private void peCommand(){
-
+        myCalendar.printByDate();
     }
     /**
      * Method in which the pc command is processed and displays the event calendar, sorted by campus and building.
      */
     private void pcCommand(){
-
+        myCalendar.printByCampus();
     }
     /**
      * Method in which the pd command is processed and displays the event calendar, sorted by the department and contact.
      */
     private void pdCommand(){
-
+        myCalendar.printByDepartment();
     }
 
 
