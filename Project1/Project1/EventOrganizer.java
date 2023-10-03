@@ -1,5 +1,9 @@
 package project1;
 import java.util.Scanner;
+
+/**
+ * 
+ */
 public class EventOrganizer{
     private EventCalendar myCalendar;
     private Scanner scanner;

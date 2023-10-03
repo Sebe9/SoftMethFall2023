@@ -12,9 +12,9 @@ public class Event implements Comparable<Event> {
     private Contact contact; //include the department name and email
     private int duration; //in minutes
     
-    public Event(Date date, Timeslot timeslot, Location location, Contact contact, int duration){
+    public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
         this.date = date;
-        this.startTime = startTime;
+        this.startTime= startTime;
         this.location = location;
         this.contact = contact;
         this.duration = duration;

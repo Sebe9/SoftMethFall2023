@@ -1,4 +1,8 @@
 package project1;
+/**
+ * Contains the timeslot information of the event, including the specific time. 
+ * @author Matthew Chan
+ */
 public enum Timeslot {
     morning("10:30am"), 
     afternoon("2:00pm"), 

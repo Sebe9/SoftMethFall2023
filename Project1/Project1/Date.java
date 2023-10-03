@@ -1,9 +1,8 @@
 package project1;
 
 /**
-Contains information and methods for a specific date.
-
-@author SebastianHanna
+* Contains information and methods for a specific date.
+* @author SebastianHanna
 */
 public class Date implements Comparable<Date> {
     private int year;
@@ -95,8 +94,8 @@ public class Date implements Comparable<Date> {
             return true;
     }
     /**
-    Determines whether or not this objects month has 31 days
-    @return true if month is one of the months with 31 days 
+    *Determines whether or not this objects month has 31 days
+    *@return true if month is one of the months with 31 days 
     */   
     private boolean isLongMonth(){
         
@@ -171,6 +170,11 @@ public class Date implements Comparable<Date> {
        
 
     }
+    /**
+     * Method that compares the expected value to the actual value. Prints out the result.
+     * @param expected The value that is expected to return from executing equals().
+     * @param actual The value that is returned from executing equals().
+     */
     private static void testResult(boolean expected, boolean actual){
         System.out.print("The expected output is: "+expected+" and the actual result is: "+actual);
         if(expected==actual){
