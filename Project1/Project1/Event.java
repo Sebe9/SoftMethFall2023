@@ -50,10 +50,34 @@ public class Event implements Comparable<Event> {
     public Location getLocation(){
         return location;
     }
-
-    //Returns a textual representation of an event     add end time
-    @Override public String toString(Event event1){
-       return "[Event Date: " + date + "] " + "[Start: " + startTime.getTime() + "] " + "@" + location + " " + "(" + location.getLocation() + ") " + "[Contact: " +  contact.getDepartment() + ", " + contact.getEmail() + "]";
+    /**
+     * Method to find the end time of the event
+     */
+    public String getEndTime(Timeslot startTime, int duration){
+        String time = startTime.getTime();
+        String[] timeSplit = time.split(":");
+        int hours = Integer.parseInt(timeSplit[0]);
+        int minutes = Integer.parseInt(timeSplit[1].substring(0,2));
+        String amPm = timeSplit[1].substring(2).trim();
+        if(amPm.equalsIgnoreCase("pm") && hours != 12){
+            hours += 12;
+        } else if(amPm.equalsIgnoreCase("am") && hours == 12){
+            hours = 0;
+        }
+        int totalMin = hours * 60 + minutes + duration;
+        int newHour = totalMin/60;
+        int newMin = totalMin%60;
+        String newAmPm = (newHour >= 12) ? "pm" : "am";
+        if(newHour > 12){
+            newHour -= 12;
+        } else if (newHour == 0){
+            newHour = 12;
+        }
+        String newTime = String.format("%02d:%02d %s", newHour, newMin, newAmPm);
+    }
+    //Returns a textual representation of an event     
+    public String toString(Event event1){
+       return "[Event Date: " + event1.date + "] " + "[Start: " + event1.startTime.getTime() + "] " + "[End: " + event1.getEndTime(startTime, duration)+ "] "+ "@" + event1.location + " " + "(" + event1.location.getLocation() + ") " + "[Contact: " +  event1.contact.getDepartment() + ", " + event1.contact.getEmail() + "]";
     }
     //Returns true if two dates, timeslots, and locations are equal
     /**
