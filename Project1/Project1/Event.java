@@ -96,6 +96,8 @@ public class Event implements Comparable<Event> {
     public static void main(String[] args){
         testSameEvent();
         testDifferentEvent();
+        testDifferentDate();
+        testDifferentLocation();
     }
     /**
      * Method that compares the expected value to the actual value. Prints out the result.
@@ -162,5 +164,54 @@ public class Event implements Comparable<Event> {
         boolean actualOutput = testEvent.equals(testEventTwo);
         System.out.println("Test Case #2: Two events with different information are not the same");
     }
-
+    /**
+     * Test case #3
+     * Tests to see if two events with different dates are considered equal.
+     */
+    private static void testDifferentDate(){
+        Date date = new Date("10/10/2010");
+        Timeslot timeslot = Timeslot.valueOf("morning");
+        Location location = Location.valueOf("arc103");
+        Department department = Department.valueOf("EE");
+        String email = "ee@rutgers.edu";
+        int duration = 60;
+        Contact newContact = new Contact(department, email);
+        Event testEvent = new Event(date, timeslot, location, newContact, duration);
+        Date dateTwo = new Date("10/12/2010");
+        Timeslot timeslotTwo = Timeslot.valueOf("morning");
+        Location locationTwo = Location.valueOf("arc103");
+        Department departmentTwo = Department.valueOf("EE");
+        String emailTwo = "ee@rutgers.edu";
+        int durationTwo = 60;
+        Contact newContactTwo = new Contact(departmentTwo, emailTwo);
+        Event testEventTwo = new Event(dateTwo, timeslotTwo, locationTwo, newContactTwo, durationTwo);
+        boolean expectedOutput = false;
+        boolean actualOutput = testEvent.equals(testEventTwo);
+        System.out.println("Test Case #3: Two events with different dates are not the same");
+    }
+    /**
+     * Test case #4
+     * Tests to see if two events with different locations are considered equal.
+     */
+    private static void testDifferentLocation(){
+        Date date = new Date("10/10/2010");
+        Timeslot timeslot = Timeslot.valueOf("morning");
+        Location location = Location.valueOf("arc103");
+        Department department = Department.valueOf("EE");
+        String email = "ee@rutgers.edu";
+        int duration = 60;
+        Contact newContact = new Contact(department, email);
+        Event testEvent = new Event(date, timeslot, location, newContact, duration);
+        Date dateTwo = new Date("10/10/2010");
+        Timeslot timeslotTwo = Timeslot.valueOf("morning");
+        Location locationTwo = Location.valueOf("hll114");
+        Department departmentTwo = Department.valueOf("EE");
+        String emailTwo = "ee@rutgers.edu";
+        int durationTwo = 30;
+        Contact newContactTwo = new Contact(departmentTwo, emailTwo);
+        Event testEventTwo = new Event(dateTwo, timeslotTwo, locationTwo, newContactTwo, durationTwo);
+        boolean expectedOutput = false;
+        boolean actualOutput = testEvent.equals(testEventTwo);
+        System.out.println("Test Case #4: Two events with different locations are not the same");
+    }
 }
