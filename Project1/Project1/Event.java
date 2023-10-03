@@ -74,6 +74,7 @@ public class Event implements Comparable<Event> {
             newHour = 12;
         }
         String newTime = String.format("%02d:%02d %s", newHour, newMin, newAmPm);
+        return newTime;
     }
     //Returns a textual representation of an event     
     public String toString(Event event1){
