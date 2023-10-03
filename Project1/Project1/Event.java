@@ -51,7 +51,7 @@ public class Event implements Comparable<Event> {
         return location;
     }
     /**
-     * Method to find the end time of the event
+     * Method to calculate the end time of the event and converting it into a string
      */
     public String getEndTime(Timeslot startTime, int duration){
         String time = startTime.getTime();
