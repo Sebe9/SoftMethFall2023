@@ -1,5 +1,7 @@
 package project1;
 
+import java.util.Calendar;
+
 /**
 * Contains information and methods for a specific date.
 * @author SebastianHanna
@@ -71,7 +73,32 @@ public class Date implements Comparable<Date> {
         }
         else 
             return true;
+    } 
+    /**
+     * Checks if the date is in the future.
+     * @return boolean. Returns true if the date is in the future.
+     */
+    public boolean isFuture(){
+        Calendar today = Calendar.getInstance();
+        Calendar eventDate = Calendar.getInstance();
+        eventDate.set(getYear(), getMonth(), getDay());
+        return today.before(eventDate);
+        
     }
+    /**
+     * Checks if the date is less than six months away
+     * @return boolean Returns true if the date is less than 6 months away
+     */
+    public boolean withinSixMonths(){
+        Calendar sixMonthsAway = Calendar.getInstance();
+        sixMonthsAway.add(Calendar.MONTH, 6);
+        
+        Calendar eventDate = Calendar.getInstance();
+        eventDate.set(getYear(),getMonth(),getMonth());
+        return eventDate.before(sixMonthsAway);
+        
+    }
+
     /**
      * Determines if this object has a valid date.
      * @return true is this object hold a valid date and false if does not hold a valid date
@@ -167,8 +194,6 @@ public class Date implements Comparable<Date> {
         testThirtyDayMonth();
 
     
-       
-
     }
     /**
      * Method that compares the expected value to the actual value. Prints out the result.

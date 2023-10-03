@@ -124,7 +124,7 @@ public class EventCalendar {
                 }
                 //If the dates are the same swap if event[j] has an later timeslot than event[j+1] 
                 else if(events[j].getDate().compareTo(events[j+1].getDate())==0 ){
-                    if(events[j].getTimeSlot().compareTo(events[j+1].getTimeSlot()) > 0){
+                    if(events[j].getTimeslot().compareTo(events[j+1].getTimeslot()) > 0){
                         swapEvents(j,j+1);
                         unsorted = true;
                     }
@@ -164,8 +164,13 @@ public class EventCalendar {
         }
         print();
     } 
-    
-    
+    /**
+     * Retusn the number of events in the calendar.
+     * @return int returns the number of events
+     */
+    public int getNumEvents(){
+        return numEvents;
+    }
     /**
      * Sorts the array by Department name (Alphabetically) the prints it.
      */
@@ -175,7 +180,7 @@ public class EventCalendar {
             unsorted = false;
             for (int j = 0; j < numEvents-1; j++){
                 //swap Events if event[j] has an later date than event[j+1]
-                if (events[j].getContact().getDepartment().getContact().getName().compareTo(events[j+1].getContact().getDepartment().getContact().getName()) > 0){
+                if (events[j].getContact().getDepartment().getName().compareTo(events[j+1].getContact().getDepartment().getName()) > 0){
                     swapEvents(j,j+1);
                     unsorted = true;
                 }   

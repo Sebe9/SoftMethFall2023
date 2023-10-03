@@ -14,10 +14,15 @@ public class Event implements Comparable<Event> {
     
     public Event(Date date, Timeslot startTime, Location location, Contact contact, int duration){
         this.date = date;
-        this.startTime= startTime;
+        this.startTime = startTime;
         this.location = location;
         this.contact = contact;
         this.duration = duration;
+    }
+    public Event(Date date, Timeslot startTime, Location location){
+        this.date = date;
+        this.startTime = startTime;
+        this.location = location;
     }
     //Compares two events based off of their date. If the dates are the same it will compare timeslots
     /**
