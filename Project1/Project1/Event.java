@@ -4,6 +4,7 @@ import java.util.Calendar;
  * Contains all information for an event and implements Comparable<Event> to compare other events.
  * 
  * @author Matthew Chan
+ * @author Sebastian Hanna
  */
 public class Event implements Comparable<Event> {
     private Date date; //the event date
