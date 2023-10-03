@@ -2,7 +2,10 @@ package project1;
 import java.util.Scanner;
 
 /**
+ * Contains all information for an event and implements Comparable<Event> to compare other events.
  * 
+ * @author Matthew Chan
+ * @author Sebastian Hanna
  */
 public class EventOrganizer{
     private EventCalendar myCalendar;
