@@ -11,5 +11,7 @@ public class Checking extends Account {
         this.holder = accountProfile;
         this.balance = newBalance;
     }
-    
+    public int compareTo(Checking otherAcc){
+
+    }
 }

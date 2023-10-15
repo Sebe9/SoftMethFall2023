@@ -2,6 +2,10 @@ public class AccountDatabase {
     private Account [] accounts; //list of various types of accounts
     private int numAcct; //number of accounts in the array
     private static final int NOT_FOUND = -1;
+    public AccountDatabase(){
+        this.accounts = new Account[4];
+        numAcct = 0;
+    }
     /**
      * This method finds out if an account is in the account array.
      * @param event takes the account that is being searched for.
@@ -68,9 +72,37 @@ public class AccountDatabase {
     } //remove the given account
     public boolean withdraw(Account account){} //false if insufficient fund
     public void deposit(Account account){}
-    public void printSorted(){
+    private void swapAccts(int index1, int index2){
+        Account tempAcc = accounts[index1];
+        accounts[index1] = accounts[index2];
+        accounts[index2] = tempAcc;
 
-    } //sort by account type and profile
-    public void printFeesAndInterests(){} //calculate interests/fees
-    public void printUpdatedBalances(){} //apply the interests/fees
+    }
+    public void printSorted(){
+        boolean unsorted = true; 
+        while(unsorted == true){
+            unsorted = false;
+            for (int j = 0; j < numAcct-1; j++){
+                //swap Events if event[j] has an later date than event[j+1]
+                if (accounts[j].compareTo(accounts[j+1]) < 0){
+                    swapAccts(j,j+1);
+                    unsorted = true;
+                }
+            }
+        }
+        for (int i = 0; i <numAcct; i++){
+            System.out.println(accounts[i].toString(accounts[i]));
+        }
+    }
+     //sort by account type and profile
+    public void printFeesAndInterests(){
+        for (int i = 0; i <numAcct; i++){
+            System.out.println(accounts[i].toString(accounts[i]));
+        }
+    } //calculate interests/fees
+    public void printUpdatedBalances(){
+        for (int i = 0; i <numAcct; i++){
+            System.out.println(accounts[i].toString(accounts[i]));
+        }
+    } //apply the interests/fees
     }
