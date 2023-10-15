@@ -1,4 +1,4 @@
-public class AccountDatabase {
+public class AccountDatabase{
     private Account [] accounts; //list of various types of accounts
     private int numAcct; //number of accounts in the array
     private static final int NOT_FOUND = -1;
@@ -142,9 +142,15 @@ public class AccountDatabase {
     }
     /**
      * Test case #2
-     * Tests to see if 
+     * Tests to see if the method will succesfully remove an account that was not in the account array.
      */
     private static void testInvalidAccount(){
-
+        Date testDate = new Date("02/19/2000");
+        Profile testProfile = new Profile("Bob", "Sam", testDate);
+        Account newAccount = new Account();
+        newAccount
+        AccountDatabase testAccount = new AccountDatabase();
+        boolean expectedOutput = false;
+        boolean actualOutput = testAccount.close(newAccount);
     }
 }
