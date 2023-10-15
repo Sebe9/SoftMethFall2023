@@ -3,14 +3,24 @@ public abstract class Account implements Comparable<Account> {
     protected double balance;
     public abstract double monthlyInterest();
     public abstract double monthlyFee();
+
+    public Account(Profile holder, double balance){
+        this.holder = holder;
+        this.balance = balance;
+    }
     /**
      * @param otherAcc the other account you wish to compare this account to
      * @return int Returns a negative int, 0, or a positive int if the compared Account is less than, equal to, or greater than 
      */
-    public abstract int compareTo();
+    @Override public int compareTo(Account otherAcc){
+       return Double.compare(this.balance, otherAcc.balance); 
+    }
     
     private Profile getProfile(){
         return holder;
+    }
+    private double getBalance(){
+        return balance;
     }
    /**
  * 4 different contains functions, each for a different type of Account

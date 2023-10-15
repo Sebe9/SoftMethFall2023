@@ -9,7 +9,8 @@ public class MoneyMarket extends Savings{
     @Override public double monthlyFee(){
         return DEFAULT_MONTHLY_FEE;
     }
-    MoneyMarket(Profile accountProfile, double newBalance, boolean loyaltyStatus){
+    public MoneyMarket(Profile accountProfile, double newBalance, boolean loyaltyStatus, int withdrawal){
         super(accountProfile,newBalance,loyaltyStatus);
+        this.withdrawal = withdrawal;
     }
 }

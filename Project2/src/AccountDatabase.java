@@ -105,4 +105,46 @@ public class AccountDatabase {
             System.out.println(accounts[i].toString(accounts[i]));
         }
     } //apply the interests/fees
+    /**
+     * Main class for testing close().
+     * @param args Strings passed onto the main function.
+     */
+    public static void main(Strings[] args){
+        testValidAccount();
+        testInvalidAccount();
     }
+    /**
+     * Method that compares the expected value to the actual value. Prints out the result.
+     * @param expected The value that is expected to return from executing close().
+     * @param actual The value that is returned from executing close().
+     */
+    private static void testResult(boolean expected, boolean actual){
+        System.out.print("The expected output is: "+expected+" and the actual result is: "+actual);
+        if(expected==actual){
+            System.out.println(" -- This test case passes!");
+        }
+        else{
+            System.out.println(" -- This test case does NOT PASS!!");
+        }
+        System.out.println();
+    }
+    /**
+     * Test Case #1
+     * Tests to see if the account exists in the account array before it is removed.
+     */
+    private static void testValidAccount(){
+        Account newAccount = new Account();
+        AccountDatabase testAccount = new AccountDatabase();
+        boolean expectedOutput = true;
+        boolean actualOutput = testAccount.close(testAccount);
+        System.out.println("Test case #1: Accounts found in the array will be removed.");
+        testResult(expectedOutput, actualOutput);
+    }
+    /**
+     * Test case #2
+     * Tests to see if 
+     */
+    private static void testInvalidAccount(){
+
+    }
+}

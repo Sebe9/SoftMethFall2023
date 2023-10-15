@@ -8,9 +8,11 @@ public class Savings extends Account{
     public double monthlyFee(){
         return MONTHLY_FEE;
     }
-    Savings(Profile accountProfile, double newBalance, boolean loyaltyStatus){
-        this.holder= accountProfile;
-        this.balance = newBalance;
+    public Savings(Profile accountProfile, double newBalance, boolean loyaltyStatus){
+        super(accountProfile, newBalance);
         this.isLoyal = loyaltyStatus;
     }
+    @Override public int compareTo(Account otherAcc){
+        return Double.compare(this.balance, otherAcc.balance); 
+     }
 }

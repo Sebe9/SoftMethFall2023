@@ -7,11 +7,10 @@ public class Checking extends Account {
     public double monthlyFee(){
         return MONTHLY_INTEREST;
     }
-    Checking(Profile accountProfile, double newBalance){
-        this.holder = accountProfile;
-        this.balance = newBalance;
+    public Checking(Profile accountProfile, double newBalance){
+        super(accountProfile, newBalance);
     }
-    public int compareTo(Checking otherAcc){
-
-    }
+    @Override public int compareTo(Account otherAcc){
+        return Double.compare(this.balance, otherAcc.balance); 
+     }
 }
