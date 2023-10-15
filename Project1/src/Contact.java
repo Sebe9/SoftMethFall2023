@@ -1,4 +1,4 @@
-package project1;
+package src;
 
 /**
  * Contains contact information for an event. Provides a method to validate the contact information.

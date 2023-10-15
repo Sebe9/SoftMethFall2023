@@ -1,8 +1,10 @@
-package project1;
+package src;
 import java.util.Scanner;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
+
 /**
- * Contains all information for an event and implements Comparable<Event> to compare other events.
+ * Contains all information for an event and implements Comparable Event to compare other events.
  * 
  * @author Matthew Chan
  * @author Sebastian Hanna
@@ -26,9 +28,8 @@ public class EventOrganizer{
         Scanner scannerObj = new Scanner(System.in);
         while(true){
             String nextLine  = scannerObj.nextLine();
-            String[] inputArray = nextLine.split(" ");
-            System.out.println(inputArray[0]+ " -- INput command");
-            System.out.println(inputArray[0].equalsIgnoreCase("R"));
+            String[] inputArray = nextLine.split("\\s+");
+            
             if (nextLine.isBlank()){
                 continue;
             }
@@ -54,18 +55,33 @@ public class EventOrganizer{
                 break;
             }
             else{
-                System.out.println(nextLine.charAt(0)+" is an invalid command!");
+                System.out.println(inputArray[0]+" is an invalid command!");
             }
         }
         System.out.println("Event Organizer terminated.");
         scannerObj.close();
     }
-
+    /**
+     * Adds an event to the calendar
+     * @param eventInfo An array of strings with the info about the event
+     */
     private void aCommand(String[] eventInfo){
+        if(validTimeslot(eventInfo)==false){
+            System.out.println("Invalid time slot!");
+            return;
+        }
+        if(validLocation(eventInfo)==false){
+            System.out.println("Invalid Location!");
+            return;
+        }
+        if(validDepartmentName(eventInfo)==false){
+            System.out.println("Invalid contact information!");
+            return;
+        }
         Date date = new Date(eventInfo[1]);
-        Timeslot timeslot = Timeslot.valueOf(eventInfo[2]);
-        Location location = Location.valueOf(eventInfo[3]);
-        Department department = Department.valueOf(eventInfo[4]);
+        Timeslot timeslot = Timeslot.valueOf(eventInfo[2].toLowerCase());
+        Location location = Location.valueOf(eventInfo[3].toUpperCase());
+        Department department = Department.valueOf(eventInfo[4].toUpperCase());
         String email = eventInfo[5];
         int duration = Integer.parseInt(eventInfo[6]);
         Contact newContact = new Contact(department, email);
@@ -75,22 +91,32 @@ public class EventOrganizer{
         }
         if( duration > 120 || duration < 30 ){
             System.out.println("Event duration must be at least 30 minutes and at most 120 minutes");
+            return;
         }
         if (myCalendar.contains(event)==true){
             System.out.println("The event is already on the calendar.");
             return;
         }
         myCalendar.add(event);
+        System.out.println("Event added to the calendar");
         return;
     }
     /**
      * Method in which the r command is processed and cancels an event.
-     * @param String[] EventInfo. A string of the information about the event you want removed
+     * @param eventInfo A string of the information about the event you want removed
      */
     private void rCommand(String[] eventInfo){
+        if(validTimeslot(eventInfo)==false){
+            System.out.println("Invalid time slot!");
+            return;
+        }
+        if(validLocation(eventInfo)==false){
+            System.out.println("Invalid Location!");
+            return;
+        }
         Date date = new Date(eventInfo[1]);
-        Timeslot timeslot = Timeslot.valueOf(eventInfo[2]);
-        Location location = Location.valueOf(eventInfo[3]);
+        Timeslot timeslot = Timeslot.valueOf(eventInfo[2].toLowerCase());
+        Location location = Location.valueOf(eventInfo[3].toUpperCase());
         //Department department = Department.valueOf(eventInfo[4]);
         //String email = eventInfo[5];
         //int duration = Integer.parseInt(eventInfo[6]);
@@ -115,7 +141,9 @@ public class EventOrganizer{
             System.out.println("Event calendar is empty!");
             return;
         }
+        System.out.println("*event calendar*");
         myCalendar.print(); 
+        System.out.println("*end of event calendar*");
     }
     /**
      * Method in which the pe command is processed and displays the event calendar, sorted by event date and timeslot.
@@ -125,7 +153,9 @@ public class EventOrganizer{
             System.out.println("Event calendar is empty!");
             return;
         }
+        System.out.println("*event calendar by event date and start time*");
         myCalendar.printByDate();
+        System.out.println("*end of event calendar*");
     }
     /**
      * Method in which the pc command is processed and displays the event calendar, sorted by campus and building.
@@ -135,7 +165,9 @@ public class EventOrganizer{
             System.out.println("Event calendar is empty!");
             return;
         }
+        System.out.println("*event calendar by campus and building*");
         myCalendar.printByCampus();
+        System.out.println("*end of event calendar*");
     }
     /**
      * Method in which the pd command is processed and displays the event calendar, sorted by the department and contact.
@@ -145,23 +177,55 @@ public class EventOrganizer{
             System.out.println("Event calendar is empty!");
             return;
         }
+        System.out.println("*event calendar by department*");
         myCalendar.printByDepartment();
+        System.out.println("*end of event calendar*");
     }
 
-
-
+    /**
+     * Determines of a department name is valid
+     * @param eventInfo Array of strings with info about the event
+     * @return boolean Returns true if the department name is valid false if not
+     */
+    private boolean validDepartmentName(String[] eventInfo){
+        if (eventInfo[4].equalsIgnoreCase("CS")){
+            return true;
+        }
+        if (eventInfo[4].equalsIgnoreCase("EE")){
+            return true;
+        }
+        if (eventInfo[4].equalsIgnoreCase("ITI")){
+            return true;
+        }
+        if (eventInfo[4].equalsIgnoreCase("BAIT")){
+            return true;
+        }
+        if (eventInfo[4].equalsIgnoreCase("MATH")){
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Determines of a timslot is valid
+     * @param eventinfo Array of strings with info about the event
+     * @return boolean Returns true if the timslot is valid false if not
+     */
     private boolean validTimeslot(String[] eventinfo){
-        if(eventinfo[2].equalsIgnoreCase("afternoon")==false && eventinfo[2].equalsIgnoreCase("morning")==false && 
-        eventinfo[3].equalsIgnoreCase("evening")==false){
+        if(eventinfo[2].equalsIgnoreCase("afternoon")==false && eventinfo[2].equalsIgnoreCase("morning")==false && eventinfo[2].equalsIgnoreCase("evening")==false){
             return false;
         }
         else{
             return true;
         }
     }
+    /**
+     * Determines of a location is valid
+     * @param eventinfo Array of strings with info about the event
+     * @return boolean Returns true if the location is valid false if not
+     */
     private boolean validLocation(String[] eventinfo){
         String locationString = eventinfo[3];
-        if(locationString.equalsIgnoreCase("hlll4")){
+        if(locationString.equalsIgnoreCase("hll114")){
             return true;
         }
         if(locationString.equalsIgnoreCase("arc103")){
@@ -182,6 +246,12 @@ public class EventOrganizer{
         return false;
     }
 
+    /**
+     * Determines if there are errors in the event info
+     * @param eventInfo Array of strings with info about the event
+     * @param event The event object created by eventinfo
+     * @return boolean Returns true if there are no errors
+     */
     private boolean checkErrors(Event event, String[] eventInfo){
         //Checks if its a valid calendar date
         if(event.getDate().isValid()==false){
@@ -216,7 +286,12 @@ public class EventOrganizer{
         return true;
     }
 
-
+    /**
+     * Determines if there is errors in the event info. This method is only meant to be used by the R command
+     * @param eventInfo Array of strings with info about the event
+     * @param event The event object created by eventinfo
+     * @return boolean Returns true if there are no errors in the info
+     */
     private boolean checkRCommandErrors(Event event, String[] eventInfo){
         //Checks if its a valid calendar date
         if(event.getDate().isValid()==false){

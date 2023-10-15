@@ -1,4 +1,4 @@
-package project1; 
+package src; 
 
 /**
  * Contains information, including the name, of the department. 

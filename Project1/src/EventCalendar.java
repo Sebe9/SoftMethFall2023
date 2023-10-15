@@ -1,4 +1,4 @@
-package project1;
+package src;
 /**
  * Manipulates the event calendar through methods that add events, remove events, and sort events. 
  * @author SebastianHanna
@@ -23,7 +23,7 @@ public class EventCalendar {
      */
     private int find(Event event) { 
         for (int i = 0; i < numEvents; i++){
-            if(event.equals(events[i])){
+            if(event.compareTo(events[i])==0){
                 return i;
             }
         }
@@ -94,14 +94,14 @@ public class EventCalendar {
      */
     public void print() {
         for (int i = 0; i <numEvents; i++){
-            System.out.println(events[i]);
+            System.out.println(events[i].toString(events[i]));
         }
 
     }
     /**
      * This method swaps two events in the EventCalendar array.
-     * @param int the index of the first Event object.
-     * @param int the index of the second Event object.
+     * @param index1 the index of the first Event object.
+     * @param index2 the index of the second Event object.
      */
     private void swapEvents(int index1, int index2){
         Event tempEvent = events[index1];

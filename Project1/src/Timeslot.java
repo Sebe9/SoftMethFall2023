@@ -1,4 +1,4 @@
-package project1;
+package src;
 /**
  * Contains the timeslot information of the event, including the specific time. 
  * @author Matthew Chan

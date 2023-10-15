@@ -1,4 +1,4 @@
-package project1;
+package src;
 
 import java.util.Calendar;
 
@@ -133,7 +133,7 @@ public class Date implements Comparable<Date> {
     }
     /**
      * Compare this objects date with anothers.
-     * @param Date The date object that you want to compare this object's data to.
+     * @param date2 The date object that you want to compare this object's data to.
      * @return int 0 if the dates are equal. If this objects date is before the parameter's date it will return a positive integer. 
      * If this date is after the parameter's it will return a negative number
      */
@@ -193,6 +193,11 @@ public class Date implements Comparable<Date> {
 
         testThirtyDayMonth();
 
+        String inputString = "ARC103";
+
+        Location testLocation = Location.valueOf(inputString);
+
+        System.out.println(testLocation);
     
     }
     /**

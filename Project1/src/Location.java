@@ -1,4 +1,4 @@
-package project1;
+package src;
 /**
  * Contains information of the event's location, influding the campus and building.
  * @author Matthew Chan
@@ -28,4 +28,5 @@ public enum Location {
     public String getLocation() {
         return roomLocation;
     }
+    
 }
