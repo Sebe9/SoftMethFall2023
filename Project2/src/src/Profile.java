@@ -13,8 +13,8 @@ public class Profile implements Comparable<Profile>{
      * @return 
      */
     public int compareTo(Profile otherProfile){
-        int compareLastName = this.lname.compareTo(otherProfile.lname);
-        int compareFirstName = this.fname.compareTo(otherProfile.fname);
+        int compareLastName = this.lname.toLowerCase().compareTo(otherProfile.lname.toLowerCase());
+        int compareFirstName = this.fname.toLowerCase().compareTo(otherProfile.fname.toLowerCase());
         int compareDate = this.dob.compareTo(otherProfile.getDob());
         if (compareLastName != 0){
             return compareLastName;

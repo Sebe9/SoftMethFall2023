@@ -18,7 +18,7 @@ public class AccountDatabase{
      */
     private int find(Account account) { 
         for (int i = 0; i < numAcct; i++){
-            if(account.equals(account)){
+            if(account.equals(accounts[i])){
                 return i;
             }
         }
@@ -51,6 +51,30 @@ public class AccountDatabase{
             return true;
         }
     }
+    //For when the class has to be exactly the same
+    public boolean containsExactly(Account account){
+        int foundIndex = findExactly(account);
+        if (foundIndex == NOT_FOUND){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    private int findExactly(Account account) { 
+        for (int i = 0; i < numAcct; i++){
+            if(account.equals(accounts[i])){
+                boolean bothChecking = (account instanceof Checking && accounts[i] instanceof Checking);
+                boolean bothCollegeChecking = (account instanceof CollegeChecking && accounts[i] instanceof CollegeChecking);
+                boolean bothSavings = (account instanceof Savings && accounts[i] instanceof Savings);
+                boolean bothMoneyMarket = (account instanceof MoneyMarket && accounts[i] instanceof MoneyMarket);
+                if(bothChecking||bothCollegeChecking||bothSavings||bothMoneyMarket){
+                    return i;
+                }
+            }
+        }
+        return NOT_FOUND;
+    }
     /**
      * Opens a new account
      * @param event The account you want to open.
@@ -74,11 +98,14 @@ public class AccountDatabase{
         }
         accounts[newAccIndex] = account;
         numAcct++;
+        if(numAcct==accounts.length){
+            grow();
+        }
         return true;
     }
 
     public boolean close(Account account){
-        int indexToBeRemoved = find(account);
+        int indexToBeRemoved = findExactly(account);
         if (indexToBeRemoved == NOT_FOUND){
             return false;
         }
@@ -89,7 +116,7 @@ public class AccountDatabase{
         return true;
     } //remove the given account
     public boolean withdraw(Account account){
-        int accIndex = find(account);
+        int accIndex = findExactly(account);
         if(account.getBalance() > accounts[accIndex].getBalance() ){
             return false;
         }
@@ -100,29 +127,24 @@ public class AccountDatabase{
     } 
     
     public void deposit(Account account){
-        int accIndex = find(account);
+        int accIndex = findExactly(account);
         accounts[accIndex].setBalance(accounts[accIndex].getBalance()+account.getBalance());
     }
-    private void swapAccts(int index1, int index2){
-        Account tempAcc = accounts[index1];
-        accounts[index1] = accounts[index2];
-        accounts[index2] = tempAcc;
-
-    }
+    
     public void printSorted(){
         for (int i = 0; i <numAcct; i++){
-            System.out.println(accounts[i].toString(accounts[i]));
+            //System.out.println(accounts[i].toString(accounts[i]));
         }
     }
      //sort by account type and profile
     public void printFeesAndInterests(){
         for (int i = 0; i <numAcct; i++){
-            System.out.println(accounts[i].toString(accounts[i]));
+            //System.out.println(accounts[i].toString(accounts[i]));
         }
     } //calculate interests/fees
     public void printUpdatedBalances(){
         for (int i = 0; i <numAcct; i++){
-            System.out.println(accounts[i].toString(accounts[i]));
+            //System.out.println(accounts[i].toString(accounts[i]));
         }
     } //apply the interests/fees
     /**
