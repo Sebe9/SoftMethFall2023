@@ -1,4 +1,4 @@
-
+package src;
 
 import java.util.Calendar;
 
@@ -73,7 +73,25 @@ public class Date implements Comparable<Date> {
         }
         else 
             return true;
-    } 
+    }
+    public boolean atLeastSixteenYearsOld(){
+        
+        Calendar sixteenYearsAgo = Calendar.getInstance();
+        sixteenYearsAgo.add(Calendar.YEAR, -16);
+
+        Calendar personDate = Calendar.getInstance();
+        personDate.set(this.year, this.month-1, this.day);
+        return sixteenYearsAgo.after(personDate);
+    }
+    public boolean underTwentyFour(){
+        
+        Calendar twentyFourYearsAgo = Calendar.getInstance();
+        twentyFourYearsAgo.add(Calendar.YEAR, -24);
+
+        Calendar personDate = Calendar.getInstance();
+        personDate.set(this.year, this.month-1, this.day);
+        return twentyFourYearsAgo.before(personDate);
+    }
     /**
      * Checks if the date is in the future.
      * @return boolean. Returns true if the date is in the future.

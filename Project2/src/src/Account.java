@@ -1,3 +1,8 @@
+package src;
+/**
+ * Contains information of an account such as the holder and the balance inside the account.
+ * @author SebastianHanna, Matthew Chan
+ */
 public abstract class Account implements Comparable<Account> {
     protected Profile holder;
     protected double balance;
@@ -8,7 +13,11 @@ public abstract class Account implements Comparable<Account> {
         this.holder = holder;
         this.balance = balance;
     }
+    public Account(Profile holder){
+        this.holder = holder;  
+    }
     /**
+     * Compares the current account to another account.
      * @param otherAcc the other account you wish to compare this account to
      * @return int Returns a negative int, 0, or a positive int if the compared Account is less than, equal to, or greater than 
      */

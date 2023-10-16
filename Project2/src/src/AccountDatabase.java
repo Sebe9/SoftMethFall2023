@@ -1,10 +1,15 @@
-public class AccountDatabase {
+package src;
+
+public class AccountDatabase{
     private Account [] accounts; //list of various types of accounts
     private int numAcct; //number of accounts in the array
     private static final int NOT_FOUND = -1;
     public AccountDatabase(){
         this.accounts = new Account[4];
         numAcct = 0;
+    }
+    public int getnumAcct(){
+        return numAcct;
     }
     /**
      * This method finds out if an account is in the account array.
@@ -93,6 +98,7 @@ public class AccountDatabase {
             return true;
         }
     } 
+    
     public void deposit(Account account){
         int accIndex = find(account);
         accounts[accIndex].setBalance(accounts[accIndex].getBalance()+account.getBalance());
@@ -104,18 +110,6 @@ public class AccountDatabase {
 
     }
     public void printSorted(){
-        /**
-        boolean unsorted = true; 
-        while(unsorted == true){
-            unsorted = false;
-            for (int j = 0; j < numAcct-1; j++){
-                //swap Events if event[j] has an later date than event[j+1]
-                if (accounts[j].compareTo(accounts[j+1]) < 0){
-                    swapAccts(j,j+1);
-                    unsorted = true;
-                }
-            }
-        }*/
         for (int i = 0; i <numAcct; i++){
             System.out.println(accounts[i].toString(accounts[i]));
         }
@@ -159,18 +153,28 @@ public class AccountDatabase {
      * Tests to see if the account exists in the account array before it is removed.
      */
     private static void testValidAccount(){
-        Account newAccount = new Account();
+        Date testDate = new Date("02/19/2000");
+        Profile testProfile = new Profile("Bob", "Sam", testDate);
+        Checking newAccount = new Checking(testProfile, 10);
         AccountDatabase testAccount = new AccountDatabase();
+        testAccount.open(newAccount);
         boolean expectedOutput = true;
-        boolean actualOutput = testAccount.close(testAccount);
+        boolean actualOutput = testAccount.close(newAccount);
         System.out.println("Test case #1: Accounts found in the array will be removed.");
         testResult(expectedOutput, actualOutput);
     }
     /**
      * Test case #2
-     * Tests to see if 
+     * Tests to see if the method will succesfully remove an account that was not in the account array.
      */
     private static void testInvalidAccount(){
-
+        Date testDate = new Date("02/19/2000");
+        Profile testProfile = new Profile("Bob", "Sam", testDate);
+        Checking newAccount = new Checking(testProfile, 10);
+        AccountDatabase testAccount = new AccountDatabase();
+        boolean expectedOutput = false;
+        boolean actualOutput = testAccount.close(newAccount);
+        System.out.println("Test case #2: Accounts not even in the array cannot be succesfully removed.");
+        testResult(expectedOutput, actualOutput);
     }
 }

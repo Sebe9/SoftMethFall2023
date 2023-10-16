@@ -1,16 +1,31 @@
+package src;
 public class Savings extends Account{
     private static final double MONTHLY_FEE = 25.0;
-    private static final double MONTHLY_INTEREST = 0.33;
+    private static final double MONTHLY_INTEREST = (0.04/12);
+    private static final double REDUCED_MONTHLY_FEE = 0;
+    private static final double LOYAL_MONTHLY_INTEREST = (0.0425/12);
     protected boolean isLoyal;
     public double monthlyInterest(){
-        return MONTHLY_INTEREST;
+        if(isLoyal)
+            return LOYAL_MONTHLY_INTEREST;
+        else
+            return MONTHLY_INTEREST;
     }
     public double monthlyFee(){
-        return MONTHLY_FEE;
+        if (getBalance()>=500)
+            return REDUCED_MONTHLY_FEE;
+        else
+            return MONTHLY_FEE;
     }
     public Savings(Profile accountProfile, double newBalance, boolean loyaltyStatus){
         super(accountProfile, newBalance);
         this.isLoyal = loyaltyStatus;
+    }
+    public Savings(Profile holder){
+        super(holder);
+    }
+    public Savings(Profile holder, double newBalance){
+        super(holder,newBalance);
     }
     public int compareTo(Account otherAcc){
         if (otherAcc instanceof Savings){
