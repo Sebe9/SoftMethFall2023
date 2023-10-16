@@ -203,6 +203,7 @@ public class TransactionManager {
         }
         if(depositAccount.getBalance()<=0){
             System.out.println("Deposit - amount cannot be 0 or negative.");
+            return;
         }
         myAccountDatabase.deposit(depositAccount);
         System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" Deposit - balance updated.");
@@ -223,9 +224,11 @@ public class TransactionManager {
         }
         if(myAccountDatabase.containsExactly(withdrawalAccount)==false){
            System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" is not in the database");
+           return;
         }
         if(withdrawalAccount.getBalance()<=0){
             System.out.println("Withdraw - amount cannot be 0 or negative.");
+            return;
         }
         if(myAccountDatabase.withdraw(withdrawalAccount)==false){
             System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" Withdraw - insufficient fund.");

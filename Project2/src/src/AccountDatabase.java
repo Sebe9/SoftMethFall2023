@@ -64,11 +64,8 @@ public class AccountDatabase{
     private int findExactly(Account account) { 
         for (int i = 0; i < numAcct; i++){
             if(account.equals(accounts[i])){
-                boolean bothChecking = (account instanceof Checking && accounts[i] instanceof Checking);
-                boolean bothCollegeChecking = (account instanceof CollegeChecking && accounts[i] instanceof CollegeChecking);
-                boolean bothSavings = (account instanceof Savings && accounts[i] instanceof Savings);
-                boolean bothMoneyMarket = (account instanceof MoneyMarket && accounts[i] instanceof MoneyMarket);
-                if(bothChecking||bothCollegeChecking||bothSavings||bothMoneyMarket){
+                
+                if(account.getClass()==accounts[i].getClass()){
                     return i;
                 }
             }
