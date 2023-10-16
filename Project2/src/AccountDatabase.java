@@ -59,6 +59,11 @@ public class AccountDatabase{
         }
         return true;
     } 
+    /**
+     * Removes an account from the account array.
+     * @param account Account being removed.
+     * @return false if the account is not inside the array. Otherwise, remove the account and return true.
+     */
     public boolean close(Account account){
         int indexToBeRemoved = find(account);
         if (indexToBeRemoved == NOT_FOUND){
@@ -70,8 +75,31 @@ public class AccountDatabase{
         numAcct--;
         return true;
     } //remove the given account
-    public boolean withdraw(Account account){} //false if insufficient fund
-    public void deposit(Account account){}
+    /**
+     * Method that will subtract money being withdrawn from the account's balance.
+     * @param account Account you will withdraw from.
+     * @param moneyTaken money you will withdraw from the account's balance.
+     * @return
+     */
+    public boolean withdraw(Account account, double moneyTaken){
+        int accountIndex = find(account);
+        if(accounts[accountIndex].getBalance() >= moneyTaken && (accountIndex != -1)){
+            accounts[accountIndex].setBalance(accounts[accountIndex].getBalance() - moneyTaken);
+            return true;
+        }
+        return false;
+    } //false if insufficient fund
+    /**
+     * Method that will add money into the current balance of the account.
+     * @param account the account the money is being deposited into.
+     * @param newMoney money being added into the account.
+     */
+    public void deposit(Account account, double newMoney){
+        int accountIndex = find(account);
+        if (accountIndex != -1){
+            accounts[accountIndex].setBalance(accounts[accountIndex].getBalance() + newMoney);
+        }
+    }
     private void swapAccts(int index1, int index2){
         Account tempAcc = accounts[index1];
         accounts[index1] = accounts[index2];
@@ -109,7 +137,7 @@ public class AccountDatabase{
      * Main class for testing close().
      * @param args Strings passed onto the main function.
      */
-    public static void main(Strings[] args){
+    public static void main(String[] args){
         testValidAccount();
         testInvalidAccount();
     }
@@ -133,10 +161,13 @@ public class AccountDatabase{
      * Tests to see if the account exists in the account array before it is removed.
      */
     private static void testValidAccount(){
-        Account newAccount = new Account();
+        Date testDate = new Date("02/19/2000");
+        Profile testProfile = new Profile("Bob", "Sam", testDate);
+        Checking newAccount = new Checking(testProfile, 10);
         AccountDatabase testAccount = new AccountDatabase();
+        testAccount.open(newAccount);
         boolean expectedOutput = true;
-        boolean actualOutput = testAccount.close(testAccount);
+        boolean actualOutput = testAccount.close(newAccount);
         System.out.println("Test case #1: Accounts found in the array will be removed.");
         testResult(expectedOutput, actualOutput);
     }
@@ -147,10 +178,11 @@ public class AccountDatabase{
     private static void testInvalidAccount(){
         Date testDate = new Date("02/19/2000");
         Profile testProfile = new Profile("Bob", "Sam", testDate);
-        Account newAccount = new Account();
-        newAccount
+        Checking newAccount = new Checking(testProfile, 10);
         AccountDatabase testAccount = new AccountDatabase();
         boolean expectedOutput = false;
         boolean actualOutput = testAccount.close(newAccount);
+        System.out.println("Test case #2: Accounts not even in the array cannot be succesfully removed.");
+        testResult(expectedOutput, actualOutput);
     }
 }

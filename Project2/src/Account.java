@@ -28,14 +28,14 @@ public abstract class Account implements Comparable<Account> {
      * Retrieves the value of the holder.
      * @return the value of holder.
      */
-    private Profile getProfile(){
+    public Profile getProfile(){
         return holder;
     }
     /**
      * Retrieves the date of the balance.
      * @return the value of the balance.
      */
-    private double getBalance(){
+    public double getBalance(){
         return balance;
     }
    /**

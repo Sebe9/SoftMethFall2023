@@ -9,6 +9,7 @@ public class Profile implements Comparable<Profile>{
     /**
      * Compares current profile to another profile.
      * @param otherProfile the other profile you want to compare to. 
+     * @return 
      */
     public int compareTo(Profile otherProfile){
         int compareLastName = this.lname.compareTo(otherProfile.lname);
