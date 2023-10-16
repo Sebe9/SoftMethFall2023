@@ -1,14 +1,22 @@
 package src;
 import java.util.Scanner;
-
+/**
+ * User interface class that processes the transactions entered through the terminal. This class also determines handles all input/output.
+ * @author Sebastian Hanna
+ */
 public class TransactionManager {
     private AccountDatabase myAccountDatabase;
+    /**
+     * Creates a new instance of an account database.
+     */
     public TransactionManager(){
         myAccountDatabase = new AccountDatabase();
     }
 
 
-    
+    /**
+     * Runs the program and accepts commands.
+     */
     public void run(){
         System.out.println("Transaction Manager is running.");
         Scanner scannerObj = new Scanner(System.in);
@@ -40,6 +48,13 @@ public class TransactionManager {
         System.out.println("Event Organizer terminated.");
         scannerObj.close();
     }
+    /** 
+     * Method used to create different types of account depending on the input array.
+     * @param inputArray The string array containing information needed to setup an account.
+     * @return new account created.
+     * @throws IndexOutofBoundsException
+     * @throws NumberFormatException
+     */
     private Account makeAccount(String[] inputArray) throws IndexOutOfBoundsException, NumberFormatException{
         Account newAccount;
         Date newDate = new Date(inputArray[4]);
@@ -65,8 +80,14 @@ public class TransactionManager {
             newAccount = new MoneyMarket(newProfile, newBalance, true, 0);
             return newAccount;
         }
-        
     }
+    /**
+     * Method used to create different types of account depending on input array.
+     * @param inputArray String array containing information on the type of account.
+     * @return new account created.
+     * @throws IndexOutOfBoundsException
+     * @throws NumberFormatException
+     */
     private Account makeAccountDepositWithdraw(String[] inputArray) throws IndexOutOfBoundsException, NumberFormatException{
         Account newAccount;
         Date newDate = new Date(inputArray[4]);
@@ -90,6 +111,12 @@ public class TransactionManager {
         }
         
     }
+    /**
+     * Handles all tests for the o command.
+     * @param newlyOpenedAccount Account being checked for tests.
+     * @param inputArray String array containing account information.
+     * @return false in all cases in which the account has invalid information. Return true otherwise.
+     */
     private boolean oCommandTests(Account newlyOpenedAccount, String[] inputArray){
         if(newlyOpenedAccount.getProfile().getDob().isValid()==false){
             System.out.println("DOB invalid: "+inputArray[4]+ " not a valid calendar date!");
@@ -129,6 +156,11 @@ public class TransactionManager {
         }
         return true;
     }
+    /**
+     * Handles the o command.
+     * @param inputArray String array containing information for opening an account.
+     * @return no value.
+     */
     private void oCommand(String[] inputArray){
         Account newlyOpenedAccount;
         try{
@@ -150,8 +182,11 @@ public class TransactionManager {
         myAccountDatabase.open(newlyOpenedAccount);
         System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" opened.");
     }
-
-
+    /**
+     * Handles the c command. 
+     * @param inputArray String array containing information to close an account.
+     * @return no value.
+     */
     private void cCommand(String[] inputArray){
         Account accountToBeClosed;
         try{
@@ -183,7 +218,11 @@ public class TransactionManager {
         myAccountDatabase.close(accountToBeClosed);
         System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" has been closed");
     }
-
+    /**
+     * Handles the d command.
+     * @param inputArray String array containing information to add money.
+     * @return no value.
+     */
     private void dCommand(String[] inputArray){
         //not in database
         //amount cannot be 0 or negative
@@ -208,7 +247,11 @@ public class TransactionManager {
         myAccountDatabase.deposit(depositAccount);
         System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" Deposit - balance updated.");
     }
-
+    /**
+     * Handles the w command.
+     * @param inputArray String array containing information for withdrawing.
+     * @return no value.
+     */
     private void wCommand(String[] inputArray){
         Account withdrawalAccount;
         //insufficient fund
@@ -237,7 +280,10 @@ public class TransactionManager {
         else
             System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" Withdraw  - balance updated.");
     }
-
+    /**
+     * Calls method to display all accounts in a sorted order.
+     * @return no value.
+     */
     private void pCommand(){
         if(myAccountDatabase.getnumAcct()==0){
             System.out.println("Account Database is empty!");
@@ -246,7 +292,10 @@ public class TransactionManager {
         else
             myAccountDatabase.printSorted();
     }
-
+    /**
+     * Calls methods to display all accounts in the database along with their interests and fees.
+     * @return no value.
+     */
     private void piCommand(){
         if(myAccountDatabase.getnumAcct()==0){
             System.out.println("Account Database is empty!");
@@ -255,7 +304,10 @@ public class TransactionManager {
         else
             myAccountDatabase.printFeesAndInterests();
     }
-
+    /**
+     * Calls method to update account balances for all accounts by applying fees and interest.
+     * @return no value.
+     */
     private void ubCommand(){
         if(myAccountDatabase.getnumAcct()==0){
             System.out.println("Account Database is empty!");

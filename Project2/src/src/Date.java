@@ -211,11 +211,11 @@ public class Date implements Comparable<Date> {
 
         testThirtyDayMonth();
 
-        String inputString = "ARC103";
+        // String inputString = "ARC103";
 
-        Location testLocation = Location.valueOf(inputString);
+        // // Location testLocation = Location.valueOf(inputString);
 
-        System.out.println(testLocation);
+        // System.out.println(testLocation);
     
     }
     /**

@@ -1,4 +1,8 @@
 package src;
+/**
+ * Contains information needed to open a checking account.
+ * @author Matthew Chan
+ */
 public class Checking extends Account {
     private static final double MONTHLY_FEE = 12.0;
     private static final double MONTHLY_INTEREST = (0.01/12);
@@ -28,9 +32,18 @@ public class Checking extends Account {
     public Checking(Profile accountProfile, double newBalance){
         super(accountProfile, newBalance);
     }
+    /**
+     * Initializes the checking account with holder.
+     * @param holder the person attached to the account.
+     */
     public Checking(Profile holder){
         super(holder);
     }
+    /**
+     * Method that compares the current account to another account based on their profile.
+     * @param otherAcc account being compared to.
+     * @return Returns a value determining the comparison between both accounts. Return -1 if the accounts are not an instance of checking or college checking.
+     */
     public int compareTo(Account otherAcc){
         if (otherAcc instanceof Checking||otherAcc instanceof CollegeChecking){
             return this.getProfile().compareTo(otherAcc.getProfile());
@@ -39,7 +52,11 @@ public class Checking extends Account {
             return -1;
         }
     }
-
+    /**
+     * Method that checks if the profiles of two accounts are equal.
+     * @param otherAccount Account being compared to the current account.
+     * @return true if the otherAccount is an instance of checking and collegechecking and shares the same profile. Returns false otherwise.
+     */
     public boolean equals(Account otherAccount){
         if(otherAccount instanceof Checking || otherAccount instanceof CollegeChecking){
             if(this.getProfile().compareTo(otherAccount.getProfile())==0){

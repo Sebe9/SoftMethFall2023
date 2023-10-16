@@ -17,9 +17,18 @@ public class CollegeChecking extends Checking{
         super(accountProfile,newBalance);
         this.campus = campusCode;
     }
+    /**
+     * Initializes the information needed to setup a college checking account.
+     * @param holder Profile attached to account.
+     */
     public CollegeChecking(Profile holder){
         super(holder);
     }
+    /**
+     * Initializes the information needed to setup a college checking account.
+     * @param holder Profile attached to account.
+     * @param newBalance Balance attached to the account.
+     */
     public CollegeChecking(Profile holder, double newBalance){
         super(holder,newBalance);
     }
@@ -37,6 +46,10 @@ public class CollegeChecking extends Checking{
     public double monthlyFee(){
         return MONTHLY_INTEREST;
     }
+    /**
+     * Retrieves the data for campus.
+     * @return the value of campus.
+     */
     public Campus getCampus(){
         return campus;
     }

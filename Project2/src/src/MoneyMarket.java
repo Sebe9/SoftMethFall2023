@@ -1,4 +1,8 @@
 package src;
+/**
+ * Contains information for setting up a Money Market account.
+ * @author Sebastian Hanna
+ */
 public class MoneyMarket extends Savings{
     private int withdrawal;
     private static final double DEFAULT_MONTHLY_FEE = 25.0;
@@ -6,12 +10,20 @@ public class MoneyMarket extends Savings{
     private static final double LOYAL_MONTHLY_FEE = 0;
     private static final double LOYAL_MONTHLY_INTEREST = 0.00396;
     protected boolean isLoyal;
+    /**
+     * Determines the type of monthly interest for an account.
+     * @return LOYAL_MONTHLY_INTEREST if they are loyal. Return DEFAULT_MONTHLY_INTEREST otherwise.
+     */
     @Override public double monthlyInterest(){
         if (isLoyal)
             return LOYAL_MONTHLY_INTEREST;
         else
             return DEFAULT_MONTHLY_INTEREST;
     }
+    /**
+     * Calculates the monthly fee of an account depending on their loyalty status.
+     * @return the fee needed for an account.
+     */
     @Override public double monthlyFee(){
         double fee;
         if (isLoyal)
@@ -22,16 +34,36 @@ public class MoneyMarket extends Savings{
             fee+=10;
         return fee;
     }
+    /**
+     * Initializes the information needed to open a MoneyMarket account.
+     * @param accountProfile Profile attached to account.
+     * @param newBalance Balance attached to account.
+     * @param loyaltyStatus Loyalty status of an account.
+     * @param withdrawal Money to withdraw. 
+     */
     public MoneyMarket(Profile accountProfile, double newBalance, boolean loyaltyStatus, int withdrawal){
         super(accountProfile,newBalance,loyaltyStatus);
         this.withdrawal = withdrawal;
     }
+    /**
+     * Initializes MoneyMarket through the profile.
+     * @param holder Profile attached to account.
+     */
     public MoneyMarket(Profile holder){
         super(holder);
     }
+    /**
+     * Initializes MoneyMarket through the holder and balance.
+     * @param holder Profile attached to account.
+     * @param newBalance Balance attached to account.
+     */
     public MoneyMarket(Profile holder, double newBalance){
         super(holder,newBalance);
     }
+    /**
+     * Compares the profiles of the current account with a second account.
+     * @return -1 if otherAcc is not an instance of MoneyMarket. Otherwise, return value of the comparison of the current account with the otherAcc.
+     */
     public int compareTo(Account otherAcc){
         if (otherAcc instanceof MoneyMarket){
             return this.getProfile().compareTo(otherAcc.getProfile());
@@ -40,6 +72,10 @@ public class MoneyMarket extends Savings{
             return -1;
         }
     }
+    /**
+     * Method to determine if two accounts are equal.
+     * @return true if the otherAccount is an instance of MoneyMarket and shares the same profile. Returns false otherwise.
+     */
     @Override public boolean equals(Account otherAccount){
         if(otherAccount instanceof MoneyMarket){
             if(this.getProfile().compareTo(otherAccount.getProfile())==0){

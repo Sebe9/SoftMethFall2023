@@ -1,13 +1,23 @@
 package src;
-
+import java.text.DecimalFormat;
+/**
+ * Class that contains the information for an array that holds list of accounts with different types.
+ */
 public class AccountDatabase{
     private Account [] accounts; //list of various types of accounts
     private int numAcct; //number of accounts in the array
     private static final int NOT_FOUND = -1;
+    /**
+     * Creating the Account Database array.
+     */
     public AccountDatabase(){
         this.accounts = new Account[4];
         numAcct = 0;
     }
+    /**
+     * Getter method for numAcct.
+     * @return number of accounts in the account array.
+     */
     public int getnumAcct(){
         return numAcct;
     }
@@ -52,6 +62,11 @@ public class AccountDatabase{
         }
     }
     //For when the class has to be exactly the same
+    /**
+     * Boolean method to determine if the class is exactly the same
+     * @param account the account you want to search.
+     * @return boolean returns true if the object is contained in the array. Returns false if not.
+     */
     public boolean containsExactly(Account account){
         int foundIndex = findExactly(account);
         if (foundIndex == NOT_FOUND){
@@ -61,6 +76,11 @@ public class AccountDatabase{
             return true;
         }
     }
+    /**
+     * This method finds out if an account is in the account array.
+     * @param account takes the account that is being searched for.
+     * @return int returns the index of the account if found. Returns -1 if the account is not in the array.
+     */
     private int findExactly(Account account) { 
         for (int i = 0; i < numAcct; i++){
             if(account.equals(accounts[i])){
@@ -100,7 +120,11 @@ public class AccountDatabase{
         }
         return true;
     }
-
+    /**
+     * Removes account from the account array.
+     * @param account The object that will be removed.
+     * @return false if the account is not found in the array. Return true if it is found and then removed.
+     */
     public boolean close(Account account){
         int indexToBeRemoved = findExactly(account);
         if (indexToBeRemoved == NOT_FOUND){
@@ -112,6 +136,11 @@ public class AccountDatabase{
         numAcct--;
         return true;
     } //remove the given account
+    /**
+     * Withdraws money from the account's balance.
+     * @param account The account money is being withdrawn from.
+     * @return false if the money being withdrawn is more than the money in the account. Returns true if the account is found and the money is subtracted from the account.
+     */
     public boolean withdraw(Account account){
         int accIndex = findExactly(account);
         if(account.getBalance() > accounts[accIndex].getBalance() ){
@@ -122,12 +151,15 @@ public class AccountDatabase{
             return true;
         }
     } 
-    
+    /**
+     * Adds to an account's balance.
+     * @param account The account in which money is being added to.
+     */
     public void deposit(Account account){
         int accIndex = findExactly(account);
         accounts[accIndex].setBalance(accounts[accIndex].getBalance()+account.getBalance());
     }
-    
+
     public void printSorted(){
         for (int i = 0; i <numAcct; i++){
             //System.out.println(accounts[i].toString(accounts[i]));

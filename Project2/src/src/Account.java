@@ -9,10 +9,19 @@ public abstract class Account implements Comparable<Account> {
     public abstract double monthlyInterest();
     public abstract double monthlyFee();
     public abstract boolean equals(Account otherAccount);
+    /**
+     * Initializes account object with holder and balance.
+     * @param holder Person attached to account.
+     * @param balance Balance attached to account.
+     */
     public Account(Profile holder, double balance){
         this.holder = holder;
         this.balance = balance;
     }
+    /**
+     * Initializes account object with holder.
+     * @param holder Person attached to account.
+     */
     public Account(Profile holder){
         this.holder = holder;  
     }
@@ -31,12 +40,24 @@ public abstract class Account implements Comparable<Account> {
         }
     }
     */
+    /**
+     * Getter method for the holder.
+     * @return the data for holder.
+     */
     public Profile getProfile(){
         return holder;
     }
+    /**
+     * Getter method for the balance.
+     * @return the data of the balance.
+     */
     public double getBalance(){
         return balance;
     }
+    /**
+     * Setter method to mutate the balance.
+     * @param newBalance the new balance of the account.
+     */
     public void setBalance(double newBalance){
         this.balance = newBalance;
     }
