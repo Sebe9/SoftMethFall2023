@@ -159,23 +159,30 @@ public class AccountDatabase{
         int accIndex = findExactly(account);
         accounts[accIndex].setBalance(accounts[accIndex].getBalance()+account.getBalance());
     }
-
+    /**
+     * Sorts and prints out the array by account type and profile. 
+     */
     public void printSorted(){
         for (int i = 0; i <numAcct; i++){
-            //System.out.println(accounts[i].toString(accounts[i]));
+            System.out.println(accounts[i].toString(accounts[i]));
         }
     }
-     //sort by account type and profile
+    /**
+     * Sorts and prints out the array along with fees and interests.
+     */
     public void printFeesAndInterests(){
         for (int i = 0; i <numAcct; i++){
-            //System.out.println(accounts[i].toString(accounts[i]));
+            System.out.println(accounts[i].toStringPI(accounts[i]));
         }
-    } //calculate interests/fees
+    } 
+    /**
+     * Sorts and prints out the array with updates balances.
+     */
     public void printUpdatedBalances(){
         for (int i = 0; i <numAcct; i++){
-            //System.out.println(accounts[i].toString(accounts[i]));
+            System.out.println(accounts[i].toStringUB(accounts[i]));
         }
-    } //apply the interests/fees
+    } 
     /**
      * Main class for testing close().
      * @param args Strings passed onto the main function.

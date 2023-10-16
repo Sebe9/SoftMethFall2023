@@ -1,4 +1,7 @@
 package src;
+
+import java.text.DecimalFormat;
+
 /**
  * Contains all information attached to a savings account.
  * @author Matthew Chan
@@ -6,7 +9,7 @@ package src;
 public class Savings extends Account{
     private static final double MONTHLY_FEE = 25.0;
     private static final double MONTHLY_INTEREST = (0.04/12);
-    private static final double REDUCED_MONTHLY_FEE = 0;
+    public static final double REDUCED_MONTHLY_FEE = 0;
     private static final double LOYAL_MONTHLY_INTEREST = (0.0425/12);
     protected boolean isLoyal;
     /**
@@ -83,6 +86,36 @@ public class Savings extends Account{
         }
         else{
             return false;
+        }
+    }
+    public String getLoyalty(){
+        if(isLoyal){
+            return "::is loyal";
+        }
+        else{
+            return "";
+        }
+    }
+    public String interestFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        if (isLoyal){
+            String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
+            return newNum;
+        }
+        else{
+            String newNum = decimalFormat.format(MONTHLY_INTEREST);
+            return newNum;
+        }
+    }
+    public String feeFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        if (getBalance()>=500){
+            String newNum = decimalFormat.format(REDUCED_MONTHLY_FEE);
+            return newNum;
+        }
+        else{
+            String newNum = decimalFormat.format(MONTHLY_FEE);
+            return newNum;
         }
     }
         

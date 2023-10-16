@@ -1,4 +1,9 @@
 package src;
+
+import static src.Savings.REDUCED_MONTHLY_FEE;
+
+import java.text.DecimalFormat;
+
 /**
  * Contains information for setting up a Money Market account.
  * @author Sebastian Hanna
@@ -88,5 +93,41 @@ public class MoneyMarket extends Savings{
         else{
             return false;
         }
+    }
+
+    public String getLoyalty(){
+        if(isLoyal){
+            return "::is loyal";
+        }
+        else{
+            return "";
+        }
+    }
+
+    public int getWithdrawal(){
+        return withdrawal;
+    }
+
+    public String interestFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        if (isLoyal){
+            String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
+            return newNum;
+        }
+        else{
+            String newNum = decimalFormat.format(DEFAULT_MONTHLY_INTEREST);
+            return newNum;
+        }
+    }
+    public String feeFormat(){
+        double fee;
+        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        if (isLoyal)
+            fee = LOYAL_MONTHLY_FEE;
+        else
+            fee = DEFAULT_MONTHLY_FEE;
+        if (withdrawal >3)
+            fee+=10;
+        return decimalFormat.format(fee);
     }
 }

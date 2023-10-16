@@ -20,4 +20,16 @@ public class Campus {
         return campusCode;
     }
 
+    public String getCampusName(){
+        if(campusCode == "0"){
+            return "NEW_BRUNSWICK";
+        }
+        if(campusCode == "1"){
+            return "NEWARK";
+        }
+        else{
+            return "CAMDEN";
+        }
+    }
+
 }

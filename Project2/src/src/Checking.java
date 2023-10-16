@@ -1,4 +1,5 @@
 package src;
+import java.text.DecimalFormat;
 /**
  * Contains information needed to open a checking account.
  * @author Matthew Chan
@@ -69,6 +70,22 @@ public class Checking extends Account {
         else{
             return false;
         }
+    }
+    public String monthlyFeeFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        if (getBalance()>=1000){
+            String newNum = decimalFormat.format(REDUCED_MONTHLY_FEE);
+            return newNum;
+        }
+        else{
+            String newNum = decimalFormat.format(MONTHLY_FEE);
+            return newNum;
+        }
+    }
+    public String interestFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        String newNum = decimalFormat.format(MONTHLY_INTEREST);
+        return newNum;
     }
 
 }
