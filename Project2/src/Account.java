@@ -38,6 +38,14 @@ public abstract class Account implements Comparable<Account> {
     public double getBalance(){
         return balance;
     }
+    /**
+     * Mutate the balance of the account.
+     * @param newBalance the balance of the account after mutating it.
+     * @return the value of new balance. 
+     */
+    public double setBalance(double newBalance){
+        return this.balance = newBalance;
+    }
    /**
  * 4 different contains functions, each for a different type of Account
  * --They will each loop through the array
