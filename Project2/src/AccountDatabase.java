@@ -13,7 +13,7 @@ public class AccountDatabase {
      */
     private int find(Account account) { 
         for (int i = 0; i < numAcct; i++){
-            if(account.compareTo(accounts[i])==0){
+            if(account.equals(account)){
                 return i;
             }
         }
@@ -51,14 +51,27 @@ public class AccountDatabase {
      * @param event The account you want to open.
      * @return boolean Returns true if account is successfully opened.
      */
-    public boolean open(Account account){
-        accounts[numAcct] = account;
-        numAcct++;
-        if(accounts.length == numAcct){
-            grow();
+    public boolean open(Account account) {
+        int newAccIndex = numAcct;
+        for (int i = 0; i < numAcct; i++) {
+            if (account.getClass().getSimpleName().compareTo(accounts[i].getClass().getSimpleName()) < 0) {
+                newAccIndex = i;
+                break;
+            } else if (account.getClass().getSimpleName().equals(accounts[i].getClass().getSimpleName())) {
+                if (account.getProfile().compareTo(accounts[i].getProfile()) > 0) {
+                    newAccIndex = i;
+                    break;
+                }
+            }
         }
+        for (int i = numAcct; i > newAccIndex; i--) {
+            accounts[i] = accounts[i - 1];
+        }
+        accounts[newAccIndex] = account;
+        numAcct++;
         return true;
-    } 
+    }
+
     public boolean close(Account account){
         int indexToBeRemoved = find(account);
         if (indexToBeRemoved == NOT_FOUND){
@@ -70,8 +83,20 @@ public class AccountDatabase {
         numAcct--;
         return true;
     } //remove the given account
-    public boolean withdraw(Account account){} //false if insufficient fund
-    public void deposit(Account account){}
+    public boolean withdraw(Account account){
+        int accIndex = find(account);
+        if(account.getBalance() > accounts[accIndex].getBalance() ){
+            return false;
+        }
+        else{
+            accounts[accIndex].setBalance(accounts[accIndex].getBalance()-account.getBalance());
+            return true;
+        }
+    } 
+    public void deposit(Account account){
+        int accIndex = find(account);
+        accounts[accIndex].setBalance(accounts[accIndex].getBalance()+account.getBalance());
+    }
     private void swapAccts(int index1, int index2){
         Account tempAcc = accounts[index1];
         accounts[index1] = accounts[index2];
@@ -79,6 +104,7 @@ public class AccountDatabase {
 
     }
     public void printSorted(){
+        /**
         boolean unsorted = true; 
         while(unsorted == true){
             unsorted = false;
@@ -89,7 +115,7 @@ public class AccountDatabase {
                     unsorted = true;
                 }
             }
-        }
+        }*/
         for (int i = 0; i <numAcct; i++){
             System.out.println(accounts[i].toString(accounts[i]));
         }
@@ -109,7 +135,7 @@ public class AccountDatabase {
      * Main class for testing close().
      * @param args Strings passed onto the main function.
      */
-    public static void main(Strings[] args){
+    public static void main(String[] args){
         testValidAccount();
         testInvalidAccount();
     }

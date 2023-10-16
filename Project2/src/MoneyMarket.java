@@ -13,4 +13,25 @@ public class MoneyMarket extends Savings{
         super(accountProfile,newBalance,loyaltyStatus);
         this.withdrawal = withdrawal;
     }
+    public int compareTo(Account otherAcc){
+        if (otherAcc instanceof MoneyMarket){
+            return this.getProfile().compareTo(otherAcc.getProfile());
+        } 
+        else{
+            return -1;
+        }
+    }
+    @Override public boolean equals(Account otherAccount){
+        if(otherAccount instanceof MoneyMarket){
+            if(this.getProfile().compareTo(otherAccount.getProfile())==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
 }

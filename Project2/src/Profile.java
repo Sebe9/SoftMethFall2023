@@ -5,11 +5,15 @@ public class Profile implements Comparable<Profile>{
     public int compareTo(Profile otherProfile){
         int compareLastName = this.lname.compareTo(otherProfile.lname);
         int compareFirstName = this.fname.compareTo(otherProfile.fname);
+        int compareDate = this.dob.compareTo(otherProfile.getDob());
         if (compareLastName != 0){
             return compareLastName;
         }
-        else{
+        else if (compareFirstName!=0){
             return compareFirstName;
+        }
+        else{
+            return compareDate;
         }
     }
     public Profile(String firstName, String lastName, Date dateOfBirth){
