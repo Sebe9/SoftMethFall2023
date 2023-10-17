@@ -58,8 +58,8 @@ public abstract class Account implements Comparable<Account> {
         return balance;
     }
     /**
-     *
-     * @param newBalance 
+     * Putting balance in the right format.
+     * @return newNum 
      */
     public String getBalanceFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
@@ -73,7 +73,11 @@ public abstract class Account implements Comparable<Account> {
     public void setBalance(double newBalance){
         this.balance = newBalance;
     }
-
+    /**
+     * Representing the object as a string.
+     * @param account Account being represented.
+     * @return textual representation of the account information.
+     */
     public String toString(Account account){
         if(account instanceof Checking && !(account instanceof CollegeChecking)){
             return "Checking::" + account.getProfile().getFName() + " " + account.getProfile().getLName() + " " + account.getProfile().getDob().getMonth() + "/" + account.getProfile().getDob().getDay() + "/" + account. getProfile().getDob().getYear() + "::Balance $" + account.getBalanceFormat();
@@ -91,7 +95,11 @@ public abstract class Account implements Comparable<Account> {
             return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() ;
         }
     }
-
+    /**
+     * Representing the account object as a string.
+     * @param account Account being represented.
+     * @return textual representation of the accunt information.
+     */
     public String toStringPI(Account account){
         if(account instanceof Checking && !(account instanceof CollegeChecking)){
             Checking temp = (Checking) account;
@@ -110,7 +118,11 @@ public abstract class Account implements Comparable<Account> {
             return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() + "::fee $" + temp.feeFormat() + "::monthly interest $" + temp.interestFormat();
         }
     }
-
+    /**
+     * Representing the account object as a string.
+     * @param account Account being represented.
+     * @return textual representation of the account information.
+     */
     public String toStringUB(Account account){
         if(account instanceof Checking && !(account instanceof CollegeChecking)){
             // subtract fees add interest to balance
@@ -137,3 +149,14 @@ public abstract class Account implements Comparable<Account> {
    
 }
 
+/**
+ * compareTo, equals(), and toString in all Account types
+ * --compareTo is only to be used in the add method
+ * ----This method ends up being kind of pointless.(we only really need one in the Account class)
+ * ----Each compareTo will also compare class names 
+ * 
+ * --equals methods will be used in the contains and find methods
+ * ----Checking and CollegeCheckings don't both need this, only checking
+ * 
+ * 
+ */
