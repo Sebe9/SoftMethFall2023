@@ -36,14 +36,14 @@ public class CollegeChecking extends Checking{
      * Retrieves the data for MONTHLY_FEE.
      * @return the value of MONTHLY_FEE.
      */
-    public double monthlyInterest(){
+    @Override public double monthlyInterest(){
         return MONTHLY_FEE;
     }
     /**
      * Retrieves the data for MONTHLY_INTEREST.
      * @return the value of MONTHLY_INTEREST.
      */
-    public double monthlyFee(){
+    @Override public double monthlyFee(){
         return MONTHLY_INTEREST;
     }
     /**

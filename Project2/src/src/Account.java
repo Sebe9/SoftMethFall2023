@@ -121,14 +121,3 @@ public abstract class Account implements Comparable<Account> {
    
 }
 
-/**
- * compareTo, equals(), and toString in all Account types
- * --compareTo is only to be used in the add method
- * ----This method ends up being kind of pointless.(we only really need one in the Account class)
- * ----Each compareTo will also compare class names 
- * 
- * --equals methods will be used in the contains and find methods
- * ----Checking and CollegeCheckings don't both need this, only checking
- * 
- * 
- */

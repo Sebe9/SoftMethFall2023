@@ -69,7 +69,7 @@ public class MoneyMarket extends Savings{
      * Compares the profiles of the current account with a second account.
      * @return -1 if otherAcc is not an instance of MoneyMarket. Otherwise, return value of the comparison of the current account with the otherAcc.
      */
-    public int compareTo(Account otherAcc){
+    @Override public int compareTo(Account otherAcc){
         if (otherAcc instanceof MoneyMarket){
             return this.getProfile().compareTo(otherAcc.getProfile());
         } 
@@ -95,7 +95,7 @@ public class MoneyMarket extends Savings{
         }
     }
 
-    public String getLoyalty(){
+    @Override public String getLoyalty(){
         if(isLoyal){
             return "::is loyal";
         }
@@ -108,7 +108,7 @@ public class MoneyMarket extends Savings{
         return withdrawal;
     }
 
-    public String interestFormat(){
+    @Override public String interestFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0:00");
         if (isLoyal){
             String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
@@ -119,7 +119,7 @@ public class MoneyMarket extends Savings{
             return newNum;
         }
     }
-    public String feeFormat(){
+    @Override public String feeFormat(){
         double fee;
         DecimalFormat decimalFormat = new DecimalFormat("0:00");
         if (isLoyal)
