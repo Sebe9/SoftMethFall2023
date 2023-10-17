@@ -1,5 +1,4 @@
 package src;
-import java.text.DecimalFormat;
 /**
  * Class that contains the information for an array that holds list of accounts with different types.
  */
@@ -179,6 +178,11 @@ public class AccountDatabase{
      * Sorts and prints out the array with updates balances.
      */
     public void printUpdatedBalances(){
+        for(int i = 0 ; i< numAcct; i++){
+            if (accounts[i] instanceof MoneyMarket){
+            ((MoneyMarket)accounts[i]).setWithdrawal(0);
+            }
+        }
         for (int i = 0; i <numAcct; i++){
             System.out.println(accounts[i].toStringUB(accounts[i]));
         }

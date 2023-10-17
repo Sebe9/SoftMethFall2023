@@ -45,7 +45,7 @@ public class TransactionManager {
             else{
                 System.out.println("Invalid command!");}
         }
-        System.out.println("Event Organizer terminated.");
+        System.out.println("Transaction Manager is terminated.");
         scannerObj.close();
     }
     /** 

@@ -88,6 +88,10 @@ public class Savings extends Account{
             return false;
         }
     }
+    /**
+     * Getter method for loyalty status.
+     * @return string determining loyalty.
+     */
     public String getLoyalty(){
         if(isLoyal){
             return "::is loyal";
@@ -96,8 +100,12 @@ public class Savings extends Account{
             return "";
         }
     }
+    /**
+     * Putting interest in the correct format.
+     * @return the String of newNum.
+     */
     public String interestFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (isLoyal){
             String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
             return newNum;
@@ -107,8 +115,12 @@ public class Savings extends Account{
             return newNum;
         }
     }
+    /**
+     * Putting fee in the correct decimal format.
+     * @return the String of newNum.
+     */
     public String feeFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (getBalance()>=500){
             String newNum = decimalFormat.format(REDUCED_MONTHLY_FEE);
             return newNum;
