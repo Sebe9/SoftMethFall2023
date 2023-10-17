@@ -19,7 +19,10 @@ public class Campus {
     public String getCampusCode(){
         return campusCode;
     }
-
+    /**
+     * Method to acquire the string representation of the campus.
+     * @return the string representation of the campus.
+     */
     public String getCampusName(){
         if(campusCode.equals("0")){
             return "NEW_BRUNSWICK";
