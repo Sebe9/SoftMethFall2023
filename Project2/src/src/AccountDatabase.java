@@ -1,6 +1,7 @@
 package src;
 /**
  * Class that contains the information for an array that holds list of accounts with different types.
+ * @author Matthew Chan, Sebastian Hanna
  */
 public class AccountDatabase{
     private Account [] accounts; //list of various types of accounts
