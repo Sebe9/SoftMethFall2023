@@ -94,7 +94,9 @@ public class MoneyMarket extends Savings{
             return false;
         }
     }
-
+    /**
+     * Getter method for loyal status.
+     */
     public String getLoyalty(){
         if(isLoyal){
             return "::is loyal";
@@ -107,7 +109,10 @@ public class MoneyMarket extends Savings{
     public int getWithdrawal(){
         return withdrawal;
     }
-
+    /**
+     * Putting the interest in the right format.
+     * @return the String of newNum.
+     */
     public String interestFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (isLoyal){
@@ -119,6 +124,10 @@ public class MoneyMarket extends Savings{
             return newNum;
         }
     }
+    /**
+     * Putting the fee in the correct format.
+     * @return the fee 
+     */
     public String feeFormat(){
         double fee;
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
@@ -130,6 +139,10 @@ public class MoneyMarket extends Savings{
             fee+=10;
         return decimalFormat.format(fee);
     }
+    /**
+     * Mutating the withdrawal integer.
+     * @param newWD new withdrawal
+     */
     public void setWithdrawal(int newWD){
         this.withdrawal = newWD;
     }

@@ -178,13 +178,13 @@ public class AccountDatabase{
      * Sorts and prints out the array with updates balances.
      */
     public void printUpdatedBalances(){
-        for (int i = 0; i <numAcct; i++){
-            System.out.println(accounts[i].toStringUB(accounts[i]));
-        }
         for(int i = 0 ; i< numAcct; i++){
             if (accounts[i] instanceof MoneyMarket){
-                accounts[i].setWithdrawal();
+            ((MoneyMarket)accounts[i]).setWithdrawal(0);
             }
+        }
+        for (int i = 0; i <numAcct; i++){
+            System.out.println(accounts[i].toStringUB(accounts[i]));
         }
     } 
     /**

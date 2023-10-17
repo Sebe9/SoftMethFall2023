@@ -116,22 +116,22 @@ public abstract class Account implements Comparable<Account> {
             // subtract fees add interest to balance
             account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             Checking temp = (Checking) account;
-            return "Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance();
+            return "Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat();
         }
         if(account instanceof CollegeChecking){
             account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             CollegeChecking temp = (CollegeChecking) account; 
-            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance() + "::" + temp.getCampus().getCampusName();
+            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + "::" + temp.getCampus().getCampusName();
         }
         if(account instanceof MoneyMarket){
             account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             MoneyMarket temp = (MoneyMarket) account;
-            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance() + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal();
+            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal();
         }
         else{
             account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             Savings temp = (Savings) account;
-            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance() + temp.getLoyalty() ;
+            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() ;
         }
     }
    
