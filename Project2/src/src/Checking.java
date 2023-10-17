@@ -72,7 +72,7 @@ public class Checking extends Account {
         }
     }
     public String monthlyFeeFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (getBalance()>=1000){
             String newNum = decimalFormat.format(REDUCED_MONTHLY_FEE);
             return newNum;
@@ -83,7 +83,7 @@ public class Checking extends Account {
         }
     }
     public String interestFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String newNum = decimalFormat.format(MONTHLY_INTEREST);
         return newNum;
     }

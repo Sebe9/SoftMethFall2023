@@ -97,7 +97,7 @@ public class Savings extends Account{
         }
     }
     public String interestFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (isLoyal){
             String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
             return newNum;
@@ -108,7 +108,7 @@ public class Savings extends Account{
         }
     }
     public String feeFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (getBalance()>=500){
             String newNum = decimalFormat.format(REDUCED_MONTHLY_FEE);
             return newNum;

@@ -21,10 +21,10 @@ public class Campus {
     }
 
     public String getCampusName(){
-        if(campusCode == "0"){
+        if(campusCode.equals("0")){
             return "NEW_BRUNSWICK";
         }
-        if(campusCode == "1"){
+        if(campusCode.equals("1")){
             return "NEWARK";
         }
         else{

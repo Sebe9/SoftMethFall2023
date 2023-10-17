@@ -109,7 +109,7 @@ public class MoneyMarket extends Savings{
     }
 
     public String interestFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (isLoyal){
             String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
             return newNum;
@@ -121,7 +121,7 @@ public class MoneyMarket extends Savings{
     }
     public String feeFormat(){
         double fee;
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (isLoyal)
             fee = LOYAL_MONTHLY_FEE;
         else
@@ -129,5 +129,8 @@ public class MoneyMarket extends Savings{
         if (withdrawal >3)
             fee+=10;
         return decimalFormat.format(fee);
+    }
+    public void setWithdrawal(int newWD){
+        this.withdrawal = newWD;
     }
 }

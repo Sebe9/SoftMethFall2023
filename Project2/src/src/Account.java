@@ -1,4 +1,7 @@
 package src;
+
+import java.text.DecimalFormat;
+
 /**
  * Contains information of an account such as the holder and the balance inside the account.
  * @author SebastianHanna, Matthew Chan
@@ -55,6 +58,15 @@ public abstract class Account implements Comparable<Account> {
         return balance;
     }
     /**
+     *
+     * @param newBalance 
+     */
+    public String getBalanceFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String newNum = decimalFormat.format(balance);
+        return newNum;
+    }
+    /**
      * Setter method to mutate the balance.
      * @param newBalance the new balance of the account.
      */
@@ -63,59 +75,63 @@ public abstract class Account implements Comparable<Account> {
     }
 
     public String toString(Account account){
-        if(account instanceof Checking){
-            return "Checking::" + account.getProfile().getFName() + " " + account.getProfile().getLName() + " " + account.getProfile().getDob() + " ::Balance $" + account.getBalance();
+        if(account instanceof Checking && !(account instanceof CollegeChecking)){
+            return "Checking::" + account.getProfile().getFName() + " " + account.getProfile().getLName() + " " + account.getProfile().getDob().getMonth() + "/" + account.getProfile().getDob().getDay() + "/" + account. getProfile().getDob().getYear() + "::Balance $" + account.getBalanceFormat();
         }
         if(account instanceof CollegeChecking){
             CollegeChecking temp = (CollegeChecking) account; 
-            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + temp.getBalance() + "::" + temp.getCampus().getCampusName();
+            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + "::" + temp.getCampus().getCampusName();
         }
         if(account instanceof MoneyMarket){
             MoneyMarket temp = (MoneyMarket) account;
-            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + temp.getBalance() + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal();
+            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal();
         }
         else{
             Savings temp = (Savings) account;
-            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + temp.getBalance() + temp.getLoyalty() ;
+            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() ;
         }
     }
 
     public String toStringPI(Account account){
-        if(account instanceof Checking){
+        if(account instanceof Checking && !(account instanceof CollegeChecking)){
             Checking temp = (Checking) account;
-            return "Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + temp.getBalance() + "::fee $" + temp.monthlyFeeFormat() + "::monthly interest $" + temp.interestFormat();
+            return "Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + "::fee $" + temp.monthlyFeeFormat() + "::monthly interest $" + temp.interestFormat();
         }
         if(account instanceof CollegeChecking){
             CollegeChecking temp = (CollegeChecking) account; 
-            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + temp.getBalance() + "::" + temp.getCampus().getCampusName() + "::fee $" + temp.monthlyFeeFormat() + "::monthly interest $" + temp.interestFormat();
+            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + "::" + temp.getCampus().getCampusName() + "::fee $" + temp.monthlyFeeFormat() + "::monthly interest $" + temp.interestFormat();
         }
         if(account instanceof MoneyMarket){
             MoneyMarket temp = (MoneyMarket) account;
-            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + temp.getBalance() + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal() + "::fee $" + temp.feeFormat() + "::monthly interest $" + temp.interestFormat();
+            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal() + "::fee $" + temp.feeFormat() + "::monthly interest $" + temp.interestFormat();
         }
         else{
             Savings temp = (Savings) account;
-            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + temp.getBalance() + temp.getLoyalty() + "::fee $" + temp.feeFormat() + "::monthly interest $" + temp.interestFormat();
+            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + temp.getLoyalty() + "::fee $" + temp.feeFormat() + "::monthly interest $" + temp.interestFormat();
         }
     }
 
     public String toStringUB(Account account){
-        if(account instanceof Checking){
+        if(account instanceof Checking && !(account instanceof CollegeChecking)){
             // subtract fees add interest to balance
+            account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             Checking temp = (Checking) account;
-            return "Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + ((temp.getBalance()-temp.monthlyFee()) + temp.monthlyInterest());
+            return "Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance();
         }
         if(account instanceof CollegeChecking){
+            account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             CollegeChecking temp = (CollegeChecking) account; 
-            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + ((temp.getBalance()-temp.monthlyFee()) + temp.monthlyInterest()) + "::" + temp.getCampus().getCampusName();
+            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance() + "::" + temp.getCampus().getCampusName();
         }
         if(account instanceof MoneyMarket){
+            account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             MoneyMarket temp = (MoneyMarket) account;
-            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + ((temp.getBalance()-temp.monthlyFee()) + temp.monthlyInterest()) + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal();
+            return "Money Market::Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance() + temp.getLoyalty() + "::withdrawal: " + temp.getWithdrawal();
         }
         else{
+            account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             Savings temp = (Savings) account;
-            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob() + " ::Balance $" + ((temp.getBalance()-temp.monthlyFee()) + temp.monthlyInterest()) + temp.getLoyalty() ;
+            return "Savings::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalance() + temp.getLoyalty() ;
         }
     }
    
