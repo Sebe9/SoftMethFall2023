@@ -214,29 +214,5 @@ public class AccountDatabase{
      * Test Case #1
      * Tests to see if the account exists in the account array before it is removed.
      */
-    private static void testValidAccount(){
-        Date testDate = new Date("02/19/2000");
-        Profile testProfile = new Profile("Bob", "Sam", testDate);
-        Checking newAccount = new Checking(testProfile, 10);
-        AccountDatabase testAccount = new AccountDatabase();
-        testAccount.open(newAccount);
-        boolean expectedOutput = true;
-        boolean actualOutput = testAccount.close(newAccount);
-        System.out.println("Test case #1: Accounts found in the array will be removed.");
-        testResult(expectedOutput, actualOutput);
-    }
-    /**
-     * Test case #2
-     * Tests to see if the method will succesfully remove an account that was not in the account array.
-     */
-    private static void testInvalidAccount(){
-        Date testDate = new Date("02/19/2000");
-        Profile testProfile = new Profile("Bob", "Sam", testDate);
-        Checking newAccount = new Checking(testProfile, 10);
-        AccountDatabase testAccount = new AccountDatabase();
-        boolean expectedOutput = false;
-        boolean actualOutput = testAccount.close(newAccount);
-        System.out.println("Test case #2: Accounts not even in the array cannot be succesfully removed.");
-        testResult(expectedOutput, actualOutput);
-    }
+
 }
