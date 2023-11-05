@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 import java.util.Scanner;
 /**
  * User interface class that processes the transactions entered through the terminal. This class also determines handles all input/output.

@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 /**
  * Class that contains the information for an array that holds list of accounts with different types.
  */
@@ -191,10 +191,7 @@ public class AccountDatabase{
      * Main class for testing close().
      * @param args Strings passed onto the main function.
      */
-    public static void main(String[] args){
-        testValidAccount();
-        testInvalidAccount();
-    }
+
     /**
      * Method that compares the expected value to the actual value. Prints out the result.
      * @param expected The value that is expected to return from executing close().

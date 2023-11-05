@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 /**
  * Driver needed to run project 2. 
  * @author Matthew Chan, Sebastian Hanna

@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 /**
  * Contains all profile information such as first and last name along with date of birth.
  * @author Matthew Chan

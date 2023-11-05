@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 import java.text.DecimalFormat;
 /**
  * Contains information needed to open a checking account.

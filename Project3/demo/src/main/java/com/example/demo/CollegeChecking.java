@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 /**
  * Contains information for setting up a college checking account.
  * @author Matthew Chan

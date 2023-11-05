@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 /**
  * Inherits all behaviors of the Exception class.
  * @author Sebastian Hanna

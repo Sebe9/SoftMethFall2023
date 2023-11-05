@@ -1,6 +1,6 @@
-package src;
+package com.example.demo;
 
-import static src.Savings.REDUCED_MONTHLY_FEE;
+import static com.example.demo.Savings.REDUCED_MONTHLY_FEE;
 
 import java.text.DecimalFormat;
 

@@ -1,4 +1,4 @@
-package src;
+package com.example.demo;
 /**
  * Contains the campus code information.
  * @author Matthew Chan
