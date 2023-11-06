@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
  */
 public class Checking extends Account {
     private static final double MONTHLY_FEE = 12.0;
-    private static final double MONTHLY_INTEREST = (0.01/12);
+    private static final double MONTHLY_INTEREST = (.01/12);
     private static final double REDUCED_MONTHLY_FEE = 0;
     /**
      * Retrieves the data for MONTHLY_FEE.
@@ -48,7 +48,7 @@ public class Checking extends Account {
     public int compareTo(Account otherAcc){
         if (otherAcc instanceof Checking||otherAcc instanceof CollegeChecking){
             return this.getProfile().compareTo(otherAcc.getProfile());
-        } 
+        }
         else{
             return -1;
         }
@@ -92,8 +92,18 @@ public class Checking extends Account {
      */
     public String interestFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        String newNum = decimalFormat.format(MONTHLY_INTEREST);
+        String newNum = decimalFormat.format(balance*MONTHLY_INTEREST);
         return newNum;
     }
+    /**
+     * Putting balance in the right format.
+     * @return newNum
+     */
+    public String getNewBalanceFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String newNum = decimalFormat.format((getBalance()- monthlyFee())+ (getBalance()* monthlyInterest()));
+        return newNum;
+    }
+
 
 }

@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.text.DecimalFormat;
 
+
 /**
  * Contains all information attached to a savings account.
  * @author Matthew Chan
@@ -65,7 +66,7 @@ public class Savings extends Account{
     public int compareTo(Account otherAcc){
         if (otherAcc instanceof Savings){
             return this.getProfile().compareTo(otherAcc.getProfile());
-        } 
+        }
         else{
             return -1;
         }
@@ -93,7 +94,7 @@ public class Savings extends Account{
      * @return string determining loyalty.
      */
     public String getLoyalty(){
-        if(isLoyal){
+        if(isLoyal = true){
             return "::is loyal";
         }
         else{
@@ -107,11 +108,11 @@ public class Savings extends Account{
     public String interestFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (isLoyal){
-            String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
+            String newNum = decimalFormat.format(balance*LOYAL_MONTHLY_INTEREST);
             return newNum;
         }
         else{
-            String newNum = decimalFormat.format(MONTHLY_INTEREST);
+            String newNum = decimalFormat.format(balance*MONTHLY_INTEREST);
             return newNum;
         }
     }
@@ -130,5 +131,11 @@ public class Savings extends Account{
             return newNum;
         }
     }
-        
+
+    public String getNewBalanceFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String newNum = decimalFormat.format((getBalance()-monthlyFee())+(getBalance()*monthlyInterest()));
+        return newNum;
+    }
+
 }
