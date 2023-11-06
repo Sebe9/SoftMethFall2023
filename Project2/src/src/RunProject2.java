@@ -6,7 +6,7 @@ package src;
 public class RunProject2 {
     /**
      * Main class that runs TransactionManager.
-     * @param args
+     * @param args 
      */
     public static void main(String[] args){
         new TransactionManager().run();

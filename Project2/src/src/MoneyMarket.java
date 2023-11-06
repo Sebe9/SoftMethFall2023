@@ -49,6 +49,7 @@ public class MoneyMarket extends Savings{
     public MoneyMarket(Profile accountProfile, double newBalance, boolean loyaltyStatus, int withdrawal){
         super(accountProfile,newBalance,loyaltyStatus);
         this.withdrawal = withdrawal;
+        this.isLoyal = loyaltyStatus;
     }
     /**
      * Initializes MoneyMarket through the profile.
@@ -109,13 +110,13 @@ public class MoneyMarket extends Savings{
     }
 
     @Override public String interestFormat(){
-        DecimalFormat decimalFormat = new DecimalFormat("0:00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (isLoyal){
-            String newNum = decimalFormat.format(LOYAL_MONTHLY_INTEREST);
+            String newNum = decimalFormat.format(balance*LOYAL_MONTHLY_INTEREST);
             return newNum;
         }
         else{
-            String newNum = decimalFormat.format(DEFAULT_MONTHLY_INTEREST);
+            String newNum = decimalFormat.format(balance*DEFAULT_MONTHLY_INTEREST);
             return newNum;
         }
     }
@@ -136,5 +137,11 @@ public class MoneyMarket extends Savings{
      */
     public void setWithdrawal(int newWD){
         this.withdrawal = newWD;
+    }
+
+    public String getNewBalanceFormat(){
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String newNum = decimalFormat.format((getBalance()-monthlyFee())+(getBalance()*monthlyInterest()));
+        return newNum;
     }
 }

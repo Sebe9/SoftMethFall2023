@@ -143,6 +143,10 @@ public class AccountDatabase{
      */
     public boolean withdraw(Account account){
         int accIndex = findExactly(account);
+        if(account instanceof MoneyMarket){
+            MoneyMarket temp = (MoneyMarket) account;
+            temp.setWithdrawal(temp.getWithdrawal()+1);
+        }
         if(account.getBalance() > accounts[accIndex].getBalance() ){
             return false;
         }
@@ -192,7 +196,7 @@ public class AccountDatabase{
      * Main class for testing close().
      * @param args Strings passed onto the main function.
      */
-    public static void main(String[] args){
+    /**  public static void main(String[] args){
         testValidAccount();
         testInvalidAccount();
     }
