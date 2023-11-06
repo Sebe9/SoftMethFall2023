@@ -1,5 +1,5 @@
 package com.example.demo;
-import static src.Checking.REDUCED_MONTHLY_FEE;
+
 import java.text.DecimalFormat;
 
 /**

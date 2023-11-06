@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -18,10 +19,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="905.0" prefWidth="600.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="872.0" prefWidth="600.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
    <bottom>
-      <TextArea prefHeight="374.0" prefWidth="580.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="mainTextArea" prefHeight="374.0" prefWidth="580.0" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
       <TabPane prefHeight="505.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
@@ -44,7 +44,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label styleClass="labelCss" text="First Name">
+                              <Label fx:id="welcomeText" styleClass="labelCss" text="First Name">
                                  <GridPane.margin>
                                     <Insets right="10.0" />
                                  </GridPane.margin>
@@ -77,15 +77,18 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <RadioButton mnemonicParsing="false" text="Savings" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <RadioButton mnemonicParsing="false" text="Checking" GridPane.halignment="CENTER" />
-                                    <RadioButton mnemonicParsing="false" text="College Checking" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                                    <RadioButton mnemonicParsing="false" text="Money Market" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <RadioButton mnemonicParsing="false" text="Savings" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="accountTypeOC" />
+                                       </toggleGroup></RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Checking" toggleGroup="$accountTypeOC" GridPane.halignment="CENTER" />
+                                    <RadioButton mnemonicParsing="false" text="College Checking" toggleGroup="$accountTypeOC" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                    <RadioButton mnemonicParsing="false" text="Money Market" toggleGroup="$accountTypeOC" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
-                              <Button mnemonicParsing="false" prefWidth="100.0" text="Open" GridPane.rowIndex="4" />
-                              <Button mnemonicParsing="false" prefWidth="100.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                              <Button mnemonicParsing="false" prefWidth="100.0" text="Clear" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Button mnemonicParsing="false" onAction="#openAccount" prefWidth="100.0" text="Open" GridPane.rowIndex="4" />
+                              <Button mnemonicParsing="false" onAction="#closeAccount" prefWidth="100.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefWidth="100.0" text="Clear" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="100.0">
@@ -94,13 +97,16 @@
                                              <padding>
                                                 <Insets bottom="3.0" />
                                              </padding>
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="Campus" />
+                                             </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton mnemonicParsing="false" text="Newark">
+                                          <RadioButton mnemonicParsing="false" text="Newark" toggleGroup="$Campus">
                                              <padding>
                                                 <Insets bottom="3.0" />
                                              </padding>
                                           </RadioButton>
-                                          <RadioButton mnemonicParsing="false" text="Camden">
+                                          <RadioButton mnemonicParsing="false" text="Camden" toggleGroup="$Campus">
                                              <padding>
                                                 <Insets bottom="3.0" />
                                              </padding>
@@ -178,21 +184,24 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <RadioButton mnemonicParsing="false" text="Checking" GridPane.halignment="CENTER" />
-                                    <RadioButton mnemonicParsing="false" text="Savings" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <RadioButton mnemonicParsing="false" text="College Checking" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                                    <RadioButton mnemonicParsing="false" text="Money Market" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <RadioButton mnemonicParsing="false" text="Checking" GridPane.halignment="CENTER">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="accTypeDW" />
+                                       </toggleGroup></RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Savings" toggleGroup="$accTypeDW" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                    <RadioButton mnemonicParsing="false" text="College Checking" toggleGroup="$accTypeDW" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                    <RadioButton mnemonicParsing="false" text="Money Market" toggleGroup="$accTypeDW" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
                               <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Deposit">
+                                    <Button mnemonicParsing="false" onAction="#deposit" prefHeight="25.0" prefWidth="100.0" text="Deposit">
                                        <HBox.margin>
                                           <Insets right="40.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Withdraw" />
+                                    <Button mnemonicParsing="false" onAction="#withdraw" prefHeight="25.0" prefWidth="100.0" text="Withdraw" />
                                  </children>
                               </HBox>
                            </children>
@@ -215,10 +224,10 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="172.0" text="Load Accounts from a file" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                              <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="169.0" text="Print All Accounts" GridPane.halignment="CENTER" />
-                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="175.0" text="Print Interest and Fees" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="230.0" text="Update Accounts with Interest and Fees" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#loadAccountsFromFile" prefHeight="61.0" prefWidth="172.0" text="Load Accounts from a file" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <Button mnemonicParsing="false" onAction="#printAccounts" prefHeight="60.0" prefWidth="169.0" text="Print All Accounts" GridPane.halignment="CENTER" />
+                              <Button mnemonicParsing="false" onAction="#printIandF" prefHeight="61.0" prefWidth="175.0" text="Print Interest and Fees" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#updateIandF" prefHeight="58.0" prefWidth="230.0" text="Update Accounts with Interest and Fees" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>

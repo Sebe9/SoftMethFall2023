@@ -5,18 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48be29a1-fdd6-4b9e-a6ce-7b7e83fba2d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/AccountDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Campus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Checking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CollegeChecking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Date.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/MoneyMarket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/OtherException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Profile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/RunProject2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Savings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/TransactionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project2/JavaDoc/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project2/JavaDoc/allclasses-index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project2/JavaDoc/allpackages-index.html" beforeDir="false" />
@@ -95,24 +83,10 @@
       <change beforePath="$PROJECT_DIR$/../../Project2/JavaDoc/type-search-index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project2/src/Project2.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Project2/src/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project2/src/src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AccountDatabase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Campus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Checking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CollegeChecking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Date.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MoneyMarket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OtherException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Profile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RunProject2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Savings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TransactionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TransactionManagerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TransactionManagerMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TransactionManagerView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/CollegeChecking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CollegeChecking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/hello-view.fxml" afterDir="false" />
     </list>
@@ -138,7 +112,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Sebe/Documents/sftmeth/Project3/demo/src/main/java/com/example/demo",
+    "last_opened_file_path": "C:/Users/Sebe/Documents/Coding/fxmltest",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31954023",
     "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
@@ -185,6 +162,15 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java</url>
           <line>20</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java</url>
+          <line>19</line>
+          <properties class="com.example.demo.HelloApplication" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
