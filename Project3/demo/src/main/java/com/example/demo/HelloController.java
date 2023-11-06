@@ -1,9 +1,10 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class HelloController {
     private AccountDatabase myAccountDatabase;
@@ -21,7 +22,29 @@ public class HelloController {
     @FXML
     private Label welcomeText;
     @FXML
-    private RadioButton checkingButton, collegeCheckingButton, savingsButton, moneyMarketButton;
+    private RadioButton checkingButton;
+    @FXML
+    private RadioButton collegeCheckingButton;
+    @FXML
+    private RadioButton savingsButton;
+    @FXML
+    private RadioButton moneyMarketButton;
+    @FXML
+    private RadioButton nbButton;
+    @FXML
+    private RadioButton newarkButton;
+    @FXML
+    private RadioButton camdenButton;
+    @FXML
+    private TextField lastNameOC;
+    @FXML
+    private TextField firstNameOC;
+    @FXML
+    private TextField amountOC;
+    @FXML
+    private DatePicker dobOC;
+    @FXML
+    private CheckBox loyaltyStatus;
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("hi");
@@ -54,31 +77,31 @@ public class HelloController {
     }
     private boolean oCommandTests(Account newlyOpenedAccount, String[] inputArray){
         if(newlyOpenedAccount.getProfile().getDob().isValid()==false){
-            System.out.println("DOB invalid: "+inputArray[4]+ " not a valid calendar date!");
+            mainTextArea.appendText("DOB invalid: "+inputArray[4]+ " not a valid calendar date!\n");
             return false;
         }
         if(newlyOpenedAccount.getProfile().getDob().isFuture()==true){
-            System.out.println("DOB invalid: "+inputArray[4]+ " cannot be today or a future day.");
+            mainTextArea.appendText("DOB invalid: "+inputArray[4]+ " cannot be today or a future day.\n");
             return false;
         }
         if(newlyOpenedAccount.getProfile().getDob().atLeastSixteenYearsOld()==false){
-            System.out.println("DOB invalid: "+inputArray[4]+ " under 16.");
+            mainTextArea.appendText("DOB invalid: "+inputArray[4]+ " under 16.\n");
             return false;
         }
 
         if(newlyOpenedAccount.getBalance()<=0){
-            System.out.println("Initial deposit cannot be 0 or negative.");
+            mainTextArea.appendText("Initial deposit cannot be 0 or negative.\n");
             return false;
 
         }
         if (newlyOpenedAccount instanceof CollegeChecking){
             CollegeChecking tempCollegeCheckingAcc = (CollegeChecking) newlyOpenedAccount;
             if(tempCollegeCheckingAcc.getCampus().getCampusCode().equals("0")==false && tempCollegeCheckingAcc.getCampus().getCampusCode().equals("1")==false&&tempCollegeCheckingAcc.getCampus().getCampusCode().equals("2")==false){
-                System.out.println("Invalid campus code.");
+                mainTextArea.appendText("Invalid campus code.");
                 return false;
             }
             if(newlyOpenedAccount.getProfile().getDob().underTwentyFour()==false){
-                System.out.println("DOB invalid: "+inputArray[4]+ " over 24.");
+                mainTextArea.appendText("DOB invalid: "+inputArray[4]+ " over 24.");
                 return false;
             }
         }
@@ -91,39 +114,102 @@ public class HelloController {
         }
         return true;
     }
+    protected String[] buttonInfo(){
+        String[] info = new String[7];
+        info[0] = "1";
+        if(checkingButton.isSelected()){
+            info[1] = "C";
+        }
+        else if(collegeCheckingButton.isSelected()){
+            info[1] = "CC";
+            if (nbButton.isSelected()){
+                info[6] = "0";
+            }
+            else if(newarkButton.isSelected()){
+                info[6] = "1";
+            }
+            else if(camdenButton.isSelected()){
+                info[6] = "2";
+            }
+            else{
+                info[0] = "-1";
+            }
+        }
+        else if(savingsButton.isSelected()){
+            info[1] = "S";
+            if(loyaltyStatus.isSelected()){
+                info[6] = "1";
+            }
+            else{
+                info[6] = "0";
+            }
+        }
+        else if(moneyMarketButton.isSelected()){
+            info[1] = "MM";
+        }
+        else{
+            info[0] = "-1";
+        }
+        return info;
+    }
     @FXML
     protected String[] getinfo(){
-
-        String[] info = new String{};
+        String[] info = buttonInfo();
+        if (info[0].equals("-1")){
+            return info;
+        }
+        if(firstNameOC.getText().isBlank()||lastNameOC.getText().isBlank()||dobOC.getValue()==null||amountOC.getText().isBlank()){
+            info[0] = "-1";
+            return info;
+        }
+        info[2] = firstNameOC.getText();
+        info[3] = lastNameOC.getText();
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        info[4] = dobOC.getValue().format(pattern);
+        info[5] = amountOC.getText();
+        return info;
     }
     @FXML
     protected void openAccount(){
         mainTextArea.appendText("Opened an Account!\n");
-        String[] inputArray = getinfo();
+        String[] inputArray= getinfo();
+
+        if(inputArray[0].equals("-1")){
+            mainTextArea.appendText("Please make sure all required fields are populated with valid values\n");
+            return;
+        }
         Account newlyOpenedAccount;
         try{
             newlyOpenedAccount = makeAccount(inputArray);
         }catch (IndexOutOfBoundsException e){
-            System.out.println("Missing data for opening an account.");
+            //System.out.println("Missing data for opening an account.");
+            mainTextArea.appendText("Missing data for opening an account.\n");
             return;
         }catch(NumberFormatException e){
-            System.out.println("Not a valid amount.");
+            //System.out.println("Not a valid amount.");
+            mainTextArea.appendText("Not a valid amount.\n");
             return;
         }
         if (oCommandTests(newlyOpenedAccount,inputArray)==false){
             return;
         }
         if(myAccountDatabase.contains(newlyOpenedAccount)==true){
-            System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" is already in the database.");
+            //System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" is already in the database.");
+            mainTextArea.appendText(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" is already in the database.\n");
             return;
         }
         myAccountDatabase.open(newlyOpenedAccount);
-        System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" opened.");
+        //System.out.println(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" opened.");
+        mainTextArea.appendText(inputArray[2]+" "+ inputArray[3]+" "+inputArray[4] + "("+inputArray[1]+")" +" opened.");
     }
 
     @FXML
     protected void closeAccount(){
         mainTextArea.appendText("Closed an Account!\n");
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("M/d/yyyy");
+        String test = dobOC.getValue().format(pattern);
+        mainTextArea.appendText(test+"\n");
+
     }
     @FXML
     protected void clearFields(){
