@@ -147,6 +147,13 @@ public class AccountDatabase{
         }
         else{
             accounts[accIndex].setBalance(accounts[accIndex].getBalance()-account.getBalance());
+            if(accounts[accIndex] instanceof MoneyMarket){
+                ((MoneyMarket) accounts[accIndex]).increaseWithdrawal();
+                if (accounts[accIndex].getBalance() < 2000){
+                    ((MoneyMarket) accounts[accIndex]).setLoyal(false);
+                }
+            }
+
             return true;
         }
     } 
@@ -157,35 +164,33 @@ public class AccountDatabase{
     public void deposit(Account account){
         int accIndex = findExactly(account);
         accounts[accIndex].setBalance(accounts[accIndex].getBalance()+account.getBalance());
+        if (accounts[accIndex] instanceof MoneyMarket){
+            if(accounts[accIndex].getBalance() >= 2000){
+               ((MoneyMarket) accounts[accIndex]).setLoyal(true);
+            }
+        }
     }
     /**
      * Sorts and prints out the array by account type and profile. 
      */
-    public void printSorted(){
-        for (int i = 0; i <numAcct; i++){
-            System.out.println(accounts[i].toString(accounts[i]));
-        }
+    public String printSorted(int i){
+            return accounts[i].toString(accounts[i]);
     }
     /**
      * Sorts and prints out the array along with fees and interests.
      */
-    public void printFeesAndInterests(){
-        for (int i = 0; i <numAcct; i++){
-            System.out.println(accounts[i].toStringPI(accounts[i]));
-        }
+    public String printFeesAndInterests(int i){
+            return accounts[i].toStringPI(accounts[i]);
+
     } 
     /**
      * Sorts and prints out the array with updates balances.
      */
-    public void printUpdatedBalances(){
-        for(int i = 0 ; i< numAcct; i++){
-            if (accounts[i] instanceof MoneyMarket){
+    public String printUpdatedBalances(int i){
+        if (accounts[i] instanceof MoneyMarket){
             ((MoneyMarket)accounts[i]).setWithdrawal(0);
-            }
         }
-        for (int i = 0; i <numAcct; i++){
-            System.out.println(accounts[i].toStringUB(accounts[i]));
-        }
+        return accounts[i].toStringUB(accounts[i]);
     } 
     /**
      * Main class for testing close().

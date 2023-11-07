@@ -130,7 +130,7 @@ public abstract class Account implements Comparable<Account> {
         if(account instanceof CollegeChecking){
             account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());
             CollegeChecking temp = (CollegeChecking) account;
-            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getNewBalanceFormat() + "::" + temp.getCampus().getCampusName();
+            return "College Checking::" + temp.getProfile().getFName() + " " + temp.getProfile().getLName() + " " + temp.getProfile().getDob().getMonth() + "/" + temp.getProfile().getDob().getDay() + "/" + temp.getProfile().getDob().getYear() + "::Balance $" + temp.getBalanceFormat() + "::" + temp.getCampus().getCampusName();
         }
         if(account instanceof MoneyMarket){
             account.setBalance((account.getBalance()-account.monthlyFee()) + account.monthlyInterest());

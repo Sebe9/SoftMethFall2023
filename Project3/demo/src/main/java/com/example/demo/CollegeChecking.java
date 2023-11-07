@@ -77,6 +77,7 @@ public class CollegeChecking extends Checking{
     public String getBalanceFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String newNum = decimalFormat.format(getBalance()+(balance*MONTHLY_INTEREST));
+        setBalance(getBalance()+(balance*MONTHLY_INTEREST));
         return newNum;
     }
 

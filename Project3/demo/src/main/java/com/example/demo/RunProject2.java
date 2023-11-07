@@ -9,6 +9,6 @@ public class RunProject2 {
      * @param args
      */
     public static void main(String[] args){
-        new TransactionManager().run();
+        //new TransactionManager().run();
     }
 }

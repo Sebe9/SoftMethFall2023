@@ -138,10 +138,16 @@ public class MoneyMarket extends Savings{
     public void setWithdrawal(int newWD){
         this.withdrawal = newWD;
     }
-
+    public void increaseWithdrawal(){
+        this.withdrawal++;
+    }
     public String getNewBalanceFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String newNum = decimalFormat.format((getBalance()-monthlyFee())+(getBalance()*monthlyInterest()));
+        setBalance((getBalance()-monthlyFee())+(getBalance()*monthlyInterest()));
         return newNum;
+    }
+    public void setLoyal(boolean value){
+        isLoyal = value;
     }
 }

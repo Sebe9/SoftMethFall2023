@@ -16,7 +16,8 @@ public class TransactionManager {
 
     /**
      * Runs the program and accepts commands.
-     */
+
+
     public void run(){
         System.out.println("Transaction Manager is running.");
         Scanner scannerObj = new Scanner(System.in);
@@ -48,6 +49,8 @@ public class TransactionManager {
         System.out.println("Transaction Manager is terminated.");
         scannerObj.close();
     }
+     */
+
     /** 
      * Method used to create different types of account depending on the input array.
      * @param inputArray The string array containing information needed to setup an account.
@@ -284,6 +287,7 @@ public class TransactionManager {
      * Calls method to display all accounts in a sorted order.
      * @return no value.
      */
+    /**
     private void pCommand(){
         if(myAccountDatabase.getnumAcct()==0){
             System.out.println("Account Database is empty!");
@@ -292,10 +296,13 @@ public class TransactionManager {
         else
             myAccountDatabase.printSorted();
     }
+     **/
+
     /**
      * Calls methods to display all accounts in the database along with their interests and fees.
      * @return no value.
      */
+    /**
     private void piCommand(){
         if(myAccountDatabase.getnumAcct()==0){
             System.out.println("Account Database is empty!");
@@ -304,10 +311,12 @@ public class TransactionManager {
         else
             myAccountDatabase.printFeesAndInterests();
     }
+     */
     /**
      * Calls method to update account balances for all accounts by applying fees and interest.
      * @return no value.
      */
+    /**
     private void ubCommand(){
         if(myAccountDatabase.getnumAcct()==0){
             System.out.println("Account Database is empty!");
@@ -316,6 +325,7 @@ public class TransactionManager {
         else
             myAccountDatabase.printUpdatedBalances();
     }
+     **/
 
 }
 

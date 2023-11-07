@@ -102,6 +102,7 @@ public class Checking extends Account {
     public String getNewBalanceFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String newNum = decimalFormat.format((getBalance()- monthlyFee())+ (getBalance()* monthlyInterest()));
+        this.setBalance((getBalance()- monthlyFee())+ (getBalance()* monthlyInterest()));
         return newNum;
     }
 

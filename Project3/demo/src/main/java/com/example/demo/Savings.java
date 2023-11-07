@@ -94,7 +94,7 @@ public class Savings extends Account{
      * @return string determining loyalty.
      */
     public String getLoyalty(){
-        if(isLoyal = true){
+        if(isLoyal){
             return "::is loyal";
         }
         else{
@@ -135,6 +135,7 @@ public class Savings extends Account{
     public String getNewBalanceFormat(){
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String newNum = decimalFormat.format((getBalance()-monthlyFee())+(getBalance()*monthlyInterest()));
+        setBalance((getBalance()-monthlyFee())+(getBalance()*monthlyInterest()));
         return newNum;
     }
 
