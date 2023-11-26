@@ -37,9 +37,9 @@
             <Insets right="25.0" top="50.0" />
          </GridPane.margin>
       </VBox>
-      <VBox fx:id="buildMenuButtonVBox" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+      <VBox fx:id="buildMenuButtonVBox" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#openBuildMenu" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT">
          <children>
-            <ImageView fitHeight="250.0" fitWidth="300.0" nodeOrientation="INHERIT" onMouseClicked="#openBuildMenu" pickOnBounds="true">
+            <ImageView fitHeight="250.0" fitWidth="300.0" nodeOrientation="INHERIT" pickOnBounds="true">
                <image>
                   <Image url="@../../../images/buildMenuImage.jpg" />
                </image>
@@ -54,7 +54,7 @@
             <Insets left="25.0" top="50.0" />
          </GridPane.margin>
       </VBox>
-      <VBox fx:id="currentOrderMenuButtonVBox" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <VBox fx:id="currentOrderMenuButtonVBox" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#openCurrentOrder" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <children>
             <ImageView fitHeight="250.0" fitWidth="300.0" nodeOrientation="INHERIT" onMouseClicked="#openCurrentOrder" pickOnBounds="true">
                <image>
@@ -74,7 +74,7 @@
             <Insets right="25.0" top="50.0" />
          </GridPane.margin>
       </VBox>
-      <VBox fx:id="storeOrdersButtonVBox" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="308.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+      <VBox fx:id="storeOrdersButtonVBox" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#openStoreOrders" prefHeight="308.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
          <children>
             <ImageView fitHeight="250.0" fitWidth="300.0" onMouseClicked="#openStoreOrders" pickOnBounds="true">
                <image>
