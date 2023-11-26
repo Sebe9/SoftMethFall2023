@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -20,8 +23,9 @@
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="486.0" minHeight="10.0" prefHeight="293.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="238.0" minHeight="0.0" prefHeight="88.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="275.0" prefWidth="300.0" GridPane.halignment="RIGHT">
@@ -40,20 +44,23 @@
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT">
             <children>
             <ComboBox fx:id="pizzaTypeComboBox" onAction="#changePizzaDisplay" prefWidth="150.0" />
-            <RadioButton mnemonicParsing="false" text="Small">
+            <RadioButton fx:id="smallButton" mnemonicParsing="false" onAction="#updateSpecialtyPrice" text="Small">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="pizzaSize" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Medium">
+            <RadioButton fx:id="mediumButton" mnemonicParsing="false" onAction="#updateSpecialtyPrice" text="Medium" toggleGroup="$pizzaSize">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Large">
+            <RadioButton fx:id="largeButton" mnemonicParsing="false" onAction="#updateSpecialtyPrice" text="Large" toggleGroup="$pizzaSize">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -84,12 +91,12 @@
                     </font>
                 </Label>
             <TextField fx:id="sauceText" prefHeight="25.0" prefWidth="110.0" />
-            <CheckBox mnemonicParsing="false" text="Extra Sauce">
+            <CheckBox fx:id="extraSauce" mnemonicParsing="false" onAction="#updateSpecialtyPrice" text="Extra Sauce">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Extra Cheese">
+            <CheckBox fx:id="extraCheese" mnemonicParsing="false" onAction="#updateSpecialtyPrice" text="Extra Cheese">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -99,5 +106,35 @@
                 <Insets left="25.0" top="50.0" />
             </padding>
         </VBox>
+      <Button fx:id="addToOrderButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Add To Order" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="25.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="Price">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="priceTextField" alignment="CENTER" maxWidth="128.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
     </children>
 </GridPane>

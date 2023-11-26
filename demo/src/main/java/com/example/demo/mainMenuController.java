@@ -58,7 +58,7 @@ public class mainMenuController {
             Scene scene = new Scene(root, 800, 800);
 
             Stage newStage = new Stage();
-            newStage.setTitle("Build Your Own Pizza");
+            newStage.setTitle("Build Your Own Pizza.java");
             newStage.setScene(scene);
 
             newStage.show();
