@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BuildYourOwn extends Pizza{
-    private int numberOfToppings = 0;
+
     public double price() {
         double price = 8.99;
         price += priceAdj();

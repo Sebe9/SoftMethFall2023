@@ -8,8 +8,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
+import java.util.ArrayList;
+
 
 public class mainMenuController {
+
     @FXML
     private Label welcomeText;
     @FXML
@@ -29,6 +32,10 @@ public class mainMenuController {
     //specialtyMenuController.setOnMouseClicked(e -> {
 
     //});
+    @FXML
+    public int test(){
+        return 5;
+    }
     @FXML
     protected void openSpecialtyMenu(){
         try {
@@ -104,4 +111,9 @@ public class mainMenuController {
 
         }
     }
+   // @FXML
+    //private void initialize(){
+     //   currentOrder =
+    //}
+
 }

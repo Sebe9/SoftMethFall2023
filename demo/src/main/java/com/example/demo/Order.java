@@ -8,13 +8,23 @@ public class Order {
 
 
     public Order(int n){
+
         orderNumber = n;
+        pizzas = new ArrayList<Pizza>();
     }
     public void addPizzaToOrder(Pizza pizza){
-        if(pizzas==null){
-            pizzas = new ArrayList<Pizza>();
-        }
+
         pizzas.add(pizza);
+    }
+    public int getOrderNumber(){
+        return orderNumber;
+    }
+    public ArrayList<Pizza> getPizzas(){
+        return pizzas;
+    }
+
+    public void removePizza(int index){
+        pizzas.remove(index);
     }
 
 }

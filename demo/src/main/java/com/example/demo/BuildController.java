@@ -128,7 +128,15 @@ public class BuildController {
             alert.setHeaderText("You can't have less than 3 toppings on your pizza.");
             alert.setContentText("Please add some toppings before trying again.");
             alert.showAndWait();
-            return;
+
+        }
+        else{
+            StoreOrders.getInstance().addPizza(currentPizza);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Pizza added to Order");
+            alert.setHeaderText("Pizza added to Order");
+            alert.showAndWait();
+
         }
 
     }

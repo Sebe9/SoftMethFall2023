@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -25,7 +26,7 @@ public class specialtyMenuController {
     @FXML
     private ComboBox<String> pizzaTypeComboBox;
     @FXML
-    private ListView<String> toppingListView;
+    private ListView<Topping> toppingListView;
     @FXML
     private TextField sauceText;
     @FXML
@@ -44,11 +45,11 @@ public class specialtyMenuController {
     private TextField priceTextField;
     private Pizza currentPizza;
     @FXML
-    private ObservableList<String> deluxeToppings = observableArrayList("sausage", "pepperoni", "green pepper", "onion","mushroom");
-    private ObservableList<String> supremeToppings = observableArrayList("sausage", "pepperoni", "ham","green pepper", "onion","black olive","mushroom");
-    private ObservableList<String> meatzzaToppings = observableArrayList("sausage", "pepperoni", "beef","ham");
-    private ObservableList<String> seafoodToppings = observableArrayList("shrimp", "squid", "crab meats", "onion","mushroom");
-    private ObservableList<String> pepperoniToppings = observableArrayList( "pepperoni");
+    private ObservableList<Topping> deluxeToppings = observableArrayList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.GREEN_PEPPER, Topping.ONION,Topping.MUSHROOM);
+    private ObservableList<Topping> supremeToppings = observableArrayList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.HAM,Topping.GREEN_PEPPER, Topping.ONION,Topping.BLACK_OLIVE,Topping.MUSHROOM);
+    private ObservableList<Topping> meatzzaToppings = observableArrayList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.BEEF,Topping.HAM);
+    private ObservableList<Topping> seafoodToppings = observableArrayList(Topping.SHRIMP, Topping.SQUID, Topping.CRAB_MEATS,Topping.ONION,Topping.MUSHROOM);
+    private ObservableList<Topping> pepperoniToppings = observableArrayList( Topping.PEPPERONI);
     @FXML
     private void updateSpecialtyPrice(){
 
@@ -106,6 +107,15 @@ public class specialtyMenuController {
 
         currentPizza.setExtraCheese(extraCheese.isSelected());
         currentPizza.setExtraSauce(extraSauce.isSelected());
+        ArrayList<Topping> toppingList = new ArrayList<Topping>(toppingListView.getItems());
+        currentPizza.setToppings(toppingList);
+        if(sauceText.getText().equals("tomato")){
+            currentPizza.setSauce(Sauce.TOMATO);
+        }
+        else{
+            currentPizza.setSauce(Sauce.ALFREDO);
+        }
+
     }
     @FXML
     private void initialize(){
@@ -119,6 +129,15 @@ public class specialtyMenuController {
 
 
         changePizzaDisplay();
+
+    }
+    @FXML
+    private void addToOrderSpecialty(){
+        StoreOrders.getInstance().addPizza(currentPizza);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Pizza added to Order");
+        alert.setHeaderText("Pizza added to Order");
+        alert.showAndWait();
 
     }
 
