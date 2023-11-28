@@ -19,7 +19,10 @@ import java.util.ArrayList;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
-
+/**
+ * Controller Class for the specialty menu
+ * @author SebastianHanna
+ */
 public class specialtyMenuController {
     @FXML
     private ImageView pizzaTypeDisplay;
@@ -50,6 +53,10 @@ public class specialtyMenuController {
     private ObservableList<Topping> meatzzaToppings = observableArrayList(Topping.SAUSAGE, Topping.PEPPERONI, Topping.BEEF,Topping.HAM);
     private ObservableList<Topping> seafoodToppings = observableArrayList(Topping.SHRIMP, Topping.SQUID, Topping.CRAB_MEATS,Topping.ONION,Topping.MUSHROOM);
     private ObservableList<Topping> pepperoniToppings = observableArrayList( Topping.PEPPERONI);
+
+    /**
+     * Updates the price field to represent the price of the current pizza selections
+     */
     @FXML
     private void updateSpecialtyPrice(){
 
@@ -57,6 +64,10 @@ public class specialtyMenuController {
         updateSpecialtyPizzaInfo();
         priceTextField.setText(decimalFormat.format(currentPizza.price()));
     }
+
+    /**
+     * Updates the image, topping list, and sauce type
+     */
     @FXML
     private void changePizzaDisplay(){
         if(pizzaTypeComboBox.getValue().equals("Deluxe")){
@@ -92,6 +103,10 @@ public class specialtyMenuController {
         }
         updateSpecialtyPrice();
     }
+
+    /**
+     * Updates the currentPizza to reflect the selections entered on the GUi
+     */
     private void updateSpecialtyPizzaInfo(){
         Size currentSize;
         if(smallButton.isSelected()){
@@ -117,6 +132,10 @@ public class specialtyMenuController {
         }
 
     }
+
+    /**
+     * Initializes this GUI, sets the ComboBox selections and makes sure all text fields and not editable
+     */
     @FXML
     private void initialize(){
         ObservableList<String> pizzaTypeList= observableArrayList("Deluxe","Supreme","Meatzza","Seafood","Pepperoni");
@@ -131,6 +150,10 @@ public class specialtyMenuController {
         changePizzaDisplay();
 
     }
+
+    /**
+     * Adds the current pizza to to the current order
+     */
     @FXML
     private void addToOrderSpecialty(){
         StoreOrders.getInstance().addPizza(currentPizza);

@@ -7,7 +7,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Driver class
+ * @author SebastianHanna
+ */
 public class mainMenuApplication extends Application {
+    /**
+     * Creates the main menu GUI
+     * @param stage the state for the main menu GUI
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(mainMenuApplication.class.getResource("mainMenu.fxml"));
@@ -17,6 +26,10 @@ public class mainMenuApplication extends Application {
         stage.show();
     }
 
+    /**
+     * launches the program
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }

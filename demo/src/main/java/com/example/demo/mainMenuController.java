@@ -10,7 +10,10 @@ import javafx.scene.Parent;
 
 import java.util.ArrayList;
 
-
+/**
+ * Controller class for the main menu GUI
+ * @author SebastianHanna
+ */
 public class mainMenuController {
 
     @FXML
@@ -23,19 +26,11 @@ public class mainMenuController {
     private VBox currentOrderMenuButtonVBox;
     @FXML
     private VBox storeOrdersButtonVBox;
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
-   // @FXML
-    //specialtyMenuController.setOnMouseClicked(e -> {
 
-    //});
-    @FXML
-    public int test(){
-        return 5;
-    }
+    /**
+     * Opens the specialty menu GUi
+     */
     @FXML
     protected void openSpecialtyMenu(){
         try {
@@ -55,6 +50,10 @@ public class mainMenuController {
 
         }
     }
+
+    /**
+     * Opens the build menu GUI
+     */
     @FXML
     protected void openBuildMenu(){
         try {
@@ -74,6 +73,10 @@ public class mainMenuController {
 
         }
     }
+
+    /**
+     * Opens the current order GUI
+     */
     @FXML
     protected void openCurrentOrder(){
         try {
@@ -93,6 +96,10 @@ public class mainMenuController {
 
         }
     }
+
+    /**
+     * Opens the store orders GUi
+     */
     @FXML
     protected void openStoreOrders(){
         try {
@@ -111,9 +118,6 @@ public class mainMenuController {
 
         }
     }
-   // @FXML
-    //private void initialize(){
-     //   currentOrder =
-    //}
+
 
 }

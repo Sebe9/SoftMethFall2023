@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
+/**
+ * Controller Class for the Current Order GUI
+ * @author SebastianHanna
+ */
 public class CurrentOrderController {
     @FXML
     private TextField orderNumberTextField;
@@ -21,6 +25,10 @@ public class CurrentOrderController {
     private TextField orderTotalTextField;
     @FXML
     private ListView<String> pizzasInOrderListView;
+    private static final double TAX_RATE = 0.06625;
+    /**
+     * initializes all text fields to be uneditable and sets default display.
+     */
     @FXML
     private void initialize(){
         orderNumberTextField.setEditable(false);
@@ -30,6 +38,10 @@ public class CurrentOrderController {
         updateDisplay();
 
     }
+
+    /**
+     * Updates all elements of the display including the listview, subtotal, tax, and total
+     */
     @FXML
     private void updateDisplay(){
         orderNumberTextField.setText(Integer.toString(StoreOrders.getInstance().getCurrentOrder().getOrderNumber()));
@@ -53,17 +65,26 @@ public class CurrentOrderController {
             subtotal += pizza.price();
         }
         subtotalTextField.setText(decimalFormat.format(subtotal));
-        salesTaxTextField.setText(decimalFormat.format(subtotal*0.06625));
-        orderTotalTextField.setText(decimalFormat.format(subtotal+(subtotal*0.06625)));
+        salesTaxTextField.setText(decimalFormat.format(subtotal*TAX_RATE));
+        orderTotalTextField.setText(decimalFormat.format(subtotal+(subtotal*TAX_RATE)));
     }
+
+    /**
+     * Removes the selected pizza from the current order
+     */
     @FXML
     private void removePizza(){
         int removedIndex = pizzasInOrderListView.getSelectionModel().getSelectedIndex();
         StoreOrders.getInstance().getCurrentOrder().removePizza(removedIndex);
         updateDisplay();
     }
+
+    /**
+     * Adds the current order to Store Orders
+     */
     @FXML
     private void placeOrder(){
         StoreOrders.getInstance().placeOrder();
+        updateDisplay();
     }
 }

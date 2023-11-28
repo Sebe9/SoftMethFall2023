@@ -1,95 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="729.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.mainMenuController">
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    </rowConstraints>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="642.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StoreOrdersController">
     <children>
-        <VBox fx:id="specialtyMenuButtonVBox" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#openSpecialtyMenu" prefHeight="275.0" prefWidth="300.0" GridPane.halignment="RIGHT">
+        <HBox alignment="CENTER" prefHeight="74.0" prefWidth="600.0">
             <children>
-                <ImageView fitHeight="250.0" fitWidth="300.0" nodeOrientation="INHERIT" pickOnBounds="true">
-                    <image>
-                        <Image url="@../../../images/specialtyMenuImage.jpg" />
-                    </image>
-                </ImageView>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="306.0" text="Specialty Pizzas">
+                <Label prefHeight="20.0" prefWidth="97.0" text="Order Number">
+                    <opaqueInsets>
+                        <Insets left="25.0" />
+                    </opaqueInsets>
                     <font>
-                        <Font size="18.0" />
+                        <Font size="14.0" />
                     </font>
                 </Label>
+            <ComboBox fx:id="orderNumberComboBox" onAction="#updateListViewStoreOrder" prefWidth="150.0" />
             </children>
-            <GridPane.margin>
-                <Insets right="25.0" top="50.0" />
-            </GridPane.margin>
-        </VBox>
-        <VBox maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+        </HBox>
+        <ListView fx:id="storeOrderPizzaView" prefHeight="367.0" prefWidth="600.0" />
+        <HBox alignment="CENTER" prefHeight="93.0" prefWidth="600.0">
             <children>
-                <ImageView fitHeight="250.0" fitWidth="300.0" nodeOrientation="INHERIT" pickOnBounds="true">
-                    <image>
-                        <Image url="@../../../images/buildMenuImage.jpg" />
-                    </image>
-                </ImageView>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="306.0" text="Build Your Own Pizza">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
+                <Label text="Order Total $" />
+                <TextField fx:id="orderTotalStoreOrders">
+                    <HBox.margin>
+                        <Insets right="15.0" />
+                    </HBox.margin>
+                </TextField>
             </children>
-            <GridPane.margin>
-                <Insets left="25.0" top="50.0" />
-            </GridPane.margin>
-        </VBox>
-        <VBox maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="600.0">
             <children>
-                <ImageView fitHeight="250.0" fitWidth="300.0" nodeOrientation="INHERIT" pickOnBounds="true">
-                    <image>
-                        <Image url="@../../../images/cartMenuImage.png" />
-                    </image>
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                </ImageView>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="306.0" text="Current Order">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
+                <Button mnemonicParsing="false" onAction="#removeOrder" prefHeight="25.0" prefWidth="150.0" text="Remove Order">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin></Button>
+                <Button mnemonicParsing="false" onAction="#exportOrder" prefHeight="25.0" prefWidth="150.0" text="Export Store Orders" />
             </children>
-            <GridPane.margin>
-                <Insets right="25.0" top="50.0" />
-            </GridPane.margin>
-        </VBox>
-        <VBox maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="308.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
-            <children>
-                <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true">
-                    <image>
-                        <Image url="@../../../images/storeOrderMenuImage.jpg" />
-                    </image>
-                </ImageView>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="306.0" text="Store Orders">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-            </children>
-            <padding>
-                <Insets left="25.0" top="50.0" />
-            </padding>
-        </VBox>
+        </HBox>
     </children>
-</GridPane>
+</VBox>

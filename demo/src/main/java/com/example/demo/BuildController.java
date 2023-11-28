@@ -19,6 +19,10 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static javafx.collections.FXCollections.observableList;
 
 
+/**
+ * The Controller class for the Build Menu.
+ * @author SebastianHanna
+ */
 public class BuildController {
     @FXML
     private ImageView buildDisplay;
@@ -50,6 +54,11 @@ public class BuildController {
     private ListView<Topping> currentToppings;
     @FXML
     private Button addToOrderButtonBuild;
+    private static final int MAX_TOPPINGS = 7;
+    private static final int MIN_TOPPINGS = 3;
+    /**
+     * Creates a pizza to be customized, sets default to small and tomato.
+     */
     @FXML
     private void initialize(){
         availableToppings.setItems(observableArrayList(Topping.values()));
@@ -59,6 +68,10 @@ public class BuildController {
         updateBuildPizza();
 
     }
+
+    /**
+     * Takes the data entered on the GUI and applies it to the Pizza.
+     */
     @FXML
     private void updateBuildPizza(){
         Size currentSize;
@@ -88,14 +101,22 @@ public class BuildController {
         }
         updatePrice();
     }
+
+    /**
+     * Updates the price field in the Build Menu
+     */
     @FXML
     private void updatePrice(){
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         priceFieldBuild.setText(decimalFormat.format(currentPizza.price()));
     }
+
+    /**
+     * Moves the selected topping from available topping to current toppings
+     */
     @FXML
     private void addTopping() {
-        if (currentToppings.getItems().size() ==7){
+        if (currentToppings.getItems().size() ==MAX_TOPPINGS){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Too many Toppings");
             alert.setHeaderText("You can't add more than 7 toppings to your pizza.");
@@ -110,6 +131,10 @@ public class BuildController {
         }
         updateBuildPizza();
     }
+
+    /**
+     * Moves the selected topping from current toppings to available toppings
+     */
     @FXML
     private void removeTopping() {
         Topping selected = currentToppings.getSelectionModel().getSelectedItem();
@@ -120,9 +145,13 @@ public class BuildController {
         }
         updateBuildPizza();
     }
+
+    /**
+     * Adds the pizza to the current order. Will not let you add a pizza to order if there is less than 3 toppings on the pizza
+     */
     @FXML
     private void addToOrderBuild(){
-        if(currentToppings.getItems().size()<3){
+        if(currentToppings.getItems().size()<MIN_TOPPINGS){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Too Little Toppings");
             alert.setHeaderText("You can't have less than 3 toppings on your pizza.");
