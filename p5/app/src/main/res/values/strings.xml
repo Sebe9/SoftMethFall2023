@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="special_image_text">Specialty Pizzas</string>
+    <string name="build_image_text">Build Your Own</string>
+    <string name="current_order_image_text">Current Order</string>
+    <string name="store_orders_image_text">Store Orders</string>
+    <string name="recycle_view_description">Scrollable view for the different types of pizzas</string>
+    <string name="quantity">Quantity:</string>
+    <string name="price">Price:</string>
+    <string name="size1">Small</string>
+    <string name="size2">Medium</string>
+    <string name="size3">Large</string>
+    <string name="Sauce">Sauce:</string>
+    <string name="extraCheese">Extra Cheese</string>
+    <string name="extraSauce">Extra Sauce</string>
+    <string name="addToOrder">Add To Order</string>
+    <string name="qtext">1</string>
+    <string-array name="specialty_pizza_names">
+        <item>Deluxe</item>
+        <item>Supreme</item>
+        <item>Meatzza</item>
+        <item>Seafood</item>
+        <item>Pepperoni</item>
+        <item>PineApple</item>
+        <item>Veggie</item>
+        <item>Hawaiian</item>
+        <item>Alfredo</item>
+        <item>Shrimp</item>
+    </string-array>
+    <string name="buildImage">Build Your Own Pizza</string>
+    <string name="available">Available Toppings</string>
+    <string name="current">Current Toppings</string>
+    <string name="sauce2">Alfredo</string>
+    <string name="sauce1">Tomato</string>
+    <string name="addToppings">Add Topping</string>
+    <string name="removeTopping">Remove Topping</string>
+    <string name = "zero">0.00</string>
+
+</resources>

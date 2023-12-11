@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="192dp"
+        android:layout_height="152dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/build_menu_image" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buildImage"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ListView
+        android:id="@+id/availableListView"
+        android:layout_width="202dp"
+        android:layout_height="199dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ListView
+        android:id="@+id/currentListView"
+        android:layout_width="200dp"
+        android:layout_height="199dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/availableListView"
+        app:layout_constraintTop_toTopOf="@+id/availableListView" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/available"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/availableListView"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="@+id/availableListView"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="@string/current"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/currentListView"
+        app:layout_constraintStart_toStartOf="@+id/currentListView"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/availableListView">
+
+        <RadioButton
+            android:id="@+id/buildSmallButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/size1" />
+
+        <RadioButton
+            android:id="@+id/buildMediumButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/size2" />
+
+        <RadioButton
+            android:id="@+id/buildLargeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/size3" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup2">
+
+        <RadioButton
+            android:id="@+id/buildTomatoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/sauce1" />
+
+        <RadioButton
+            android:id="@+id/buildAlfredoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sauce2" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/buildExtraCheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/extraCheese"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup3"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup3" />
+
+    <CheckBox
+        android:id="@+id/buildExtraSauce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/extraSauce"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup3"
+        app:layout_constraintTop_toBottomOf="@+id/buildExtraCheese" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addToppings"
+        app:layout_constraintEnd_toEndOf="@+id/availableListView"
+        app:layout_constraintStart_toStartOf="@+id/availableListView"
+        app:layout_constraintTop_toBottomOf="@+id/availableListView" />
+
+    <Button
+        android:id="@+id/removeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/removeTopping"
+        app:layout_constraintEnd_toEndOf="@+id/currentListView"
+        app:layout_constraintStart_toStartOf="@+id/currentListView"
+        app:layout_constraintTop_toBottomOf="@+id/currentListView" />
+
+    <TextView
+        android:id="@+id/buildPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/zero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:text="@string/price"
+        app:layout_constraintEnd_toStartOf="@+id/buildPrice"
+        app:layout_constraintTop_toTopOf="@+id/buildPrice" />
+
+    <Button
+        android:id="@+id/buildAddToOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="@string/addToOrder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintStart_toEndOf="@+id/buildPrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
