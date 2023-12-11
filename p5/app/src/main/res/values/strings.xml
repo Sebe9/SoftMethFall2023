@@ -35,5 +35,11 @@
     <string name="addToppings">Add Topping</string>
     <string name="removeTopping">Remove Topping</string>
     <string name = "zero">0.00</string>
+    <string name = "subtotal">Subtotal</string>
+    <string name = "Sales">Sales Tax</string>
+    <string name = "total">Order Total</string>
+    <string name = "removePizzaButton">Remove Pizza</string>
+    <string name = "placeOrderButton">Place Order</string>
+    <string name = "OrderNumber">Order Number</string>
 
 </resources>
